@@ -2,1527 +2,274 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
-<title>Fast Coin - Financial Gaming Dashboard</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0d12">
+<title>Speed Coin — Play. Trade. Level Up.</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#2563eb;
-  --blue2:#1746bd;
-  --light:#eff5ff;
-  --bg:#f5f7fb;
-  --white:#fff;
-  --dark:#17233b;
-  --muted:#8490a5;
-  --border:#e9edf4;
-  --green:#13a875;
-  --red:#e45454;
-  --shadow:0 5px 25px rgba(24,45,90,.055);
+ --bg:#0b0d12;--panel:#12151d;--panel2:#171b25;--line:#252a36;--text:#f4f6fb;
+ --muted:#929bad;--accent:#e64a4a;--accent2:#ff7770;--green:#29c58b;--red:#ff5e68;
+ --gold:#f4c56a;--blue:#79aaff;--shadow:0 16px 45px rgba(0,0,0,.2);--radius:18px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Inter,Arial,sans-serif;
-  color:var(--dark);
-  background:var(--bg);
-  min-height:100vh;
-}
-button,input{font:inherit}
-button{cursor:pointer}
-.app{display:flex;min-height:100vh}
-.sidebar{
-  width:245px;background:white;border-right:1px solid var(--border);
-  padding:25px 17px;position:fixed;left:0;top:0;bottom:0;
-  z-index:20;display:flex;flex-direction:column;
-}
-.brand{display:flex;align-items:center;gap:11px;padding:0 10px 34px}
-.brand-logo{
-  width:42px;height:42px;background:var(--blue);
-  border-radius:13px;display:grid;place-items:center;
-}
-.brand-logo svg{width:30px;height:30px}
-.brand-name{font-weight:800;font-size:20px;letter-spacing:-1px}
-.brand-name span{color:var(--blue)}
-.nav-label{
-  font-size:10px;color:#a2aabb;font-weight:800;
-  letter-spacing:1.2px;padding:12px 12px;
-}
-.nav-btn{
-  border:0;background:transparent;width:100%;display:flex;
-  align-items:center;gap:13px;padding:13px 14px;
-  border-radius:10px;color:#718098;font-size:13px;
-  font-weight:600;text-align:left;margin-bottom:5px;transition:.2s;
-}
-.nav-btn svg{width:18px;height:18px}
-.nav-btn:hover,.nav-btn.active{background:#edf3ff;color:var(--blue)}
-.sidebar-bottom{margin-top:auto}
-.account-card{
-  background:#f5f8ff;border:1px solid var(--border);
-  border-radius:13px;padding:13px;display:flex;
-  align-items:center;gap:10px;
-}
-.avatar{
-  width:38px;height:38px;border-radius:50%;background:#dce8ff;
-  color:var(--blue);display:grid;place-items:center;
-  font-weight:800;flex-shrink:0;overflow:hidden;
-}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.account-name{font-size:12px;font-weight:700}
-.account-email{font-size:10px;color:var(--muted);margin-top:4px}
-.main{margin-left:245px;width:calc(100% - 245px);min-width:0}
-.topbar{
-  height:76px;background:white;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 32px;position:sticky;top:0;z-index:10;
-}
-.page-title{font-size:19px;font-weight:800;letter-spacing:-.5px}
-.top-right{display:flex;align-items:center;gap:17px}
-.online{font-size:11px;color:var(--green);font-weight:700}
-.online:before{content:"";display:inline-block;width:7px;height:7px;
-background:var(--green);border-radius:50%;margin-right:7px}
-.top-avatar{width:37px;height:37px;border-radius:50%;background:#e4edff;
-display:grid;place-items:center;color:var(--blue);font-weight:800}
-.content{max-width:1500px;margin:auto;padding:29px 32px 60px}
-.view{display:none;animation:appear .35s ease}
-.view.active{display:block}
-@keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
-.welcome{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
-.welcome h2{font-size:23px;letter-spacing:-.8px}
-.welcome p{font-size:12px;color:var(--muted);margin-top:8px}
-.date-pill{background:white;border:1px solid var(--border);border-radius:9px;
-padding:10px 13px;font-size:11px;color:#66748c}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;margin-bottom:22px}
-.card{
-  background:white;border:1px solid var(--border);
-  border-radius:14px;padding:19px;box-shadow:var(--shadow);
-}
-.stat-card{position:relative;overflow:hidden;transition:.25s}
-.stat-card:hover{transform:translateY(-3px)}
-.stat-head{display:flex;justify-content:space-between;align-items:center}
-.stat-label{font-size:11px;color:var(--muted);font-weight:600}
-.stat-icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center}
-.stat-icon svg{width:18px}
-.ic-blue{background:#edf3ff;color:#2563eb}
-.ic-green{background:#e9f9f1;color:#12a56f}
-.ic-orange{background:#fff3e5;color:#e89435}
-.ic-purple{background:#f1edff;color:#8861df}
-.stat-value{font-size:25px;font-weight:800;margin-top:15px;letter-spacing:-1px}
-.stat-change{font-size:10px;color:var(--green);margin-top:7px}
-.grid-main{display:grid;grid-template-columns:1.65fr 1fr;gap:18px}
-.card-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:19px}
-.card-heading h3{font-size:14px;font-weight:800}
-.card-heading small{color:var(--muted);font-size:10px}
-.chart-wrap{height:245px;position:relative}
-.chart-actions{display:flex;gap:5px}
-.chart-btn{
-  border:1px solid var(--border);background:white;color:var(--muted);
-  padding:6px 9px;border-radius:6px;font-size:10px;
-}
-.chart-btn.active{background:var(--light);color:var(--blue);border-color:#d8e5ff}
-.profile-hero{
-  background:linear-gradient(120deg,#1d4ed8,#3b82f6);
-  border-radius:15px;padding:25px;color:white;
-  display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:22px;position:relative;overflow:hidden;
-}
-.profile-hero:after{
-  content:"";position:absolute;width:250px;height:250px;
-  border:35px solid rgba(255,255,255,.08);border-radius:50%;
-  right:-60px;top:-120px;
-}
-.profile-hero h2{font-size:22px}
-.profile-hero p{font-size:12px;color:#dce8ff;margin-top:8px}
-.profile-hero button{position:relative;z-index:1}
-.white-btn{background:white;color:var(--blue);border:0;
-padding:11px 16px;border-radius:9px;font-weight:700;font-size:11px}
-.leaderboard{margin-top:20px}
-.table{width:100%;border-collapse:collapse}
-.table th{text-align:left;color:#99a3b4;font-size:10px;
-font-weight:700;padding:12px 8px;border-bottom:1px solid var(--border)}
-.table td{padding:14px 8px;font-size:11px;border-bottom:1px solid #f0f2f6}
-.table tr:last-child td{border:0}
-.player{display:flex;align-items:center;gap:9px;font-weight:700}
-.rank{width:22px;height:22px;border-radius:7px;background:#f2f5fa;
-display:grid;place-items:center;font-weight:800;color:#68758c}
-.rank.gold{background:#fff4d8;color:#d69b24}
-.rank.silver{background:#edf0f6;color:#65738a}
-.rank.bronze{background:#ffede1;color:#b97642}
-.coin-text{color:#c18a18;font-weight:800}
-.green{color:var(--green);font-weight:700}
-.red{color:var(--red);font-weight:700}
-.action-btn{
-  border:0;background:var(--blue);color:white;
-  padding:10px 15px;border-radius:8px;font-size:11px;font-weight:700;
-  transition:.2s;
-}
-.action-btn:hover{background:var(--blue2);transform:translateY(-1px)}
-.action-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.outline-btn{background:white;border:1px solid var(--border);color:var(--dark)}
-.company-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.company{transition:.25s}
-.company:hover{transform:translateY(-3px)}
-.company-head{display:flex;align-items:center;justify-content:space-between}
-.company-logo{width:39px;height:39px;border-radius:11px;
-background:#edf3ff;color:var(--blue);display:grid;place-items:center;
-font-size:16px;font-weight:800}
-.company-name{font-size:13px;font-weight:800;margin-top:14px}
-.company-symbol{font-size:10px;color:var(--muted);margin-top:4px}
-.company-price{font-size:21px;font-weight:800;margin-top:17px}
-.company-change{font-size:10px;margin-top:5px}
-.company-chart{height:75px;margin-top:13px}
-.company-actions{display:flex;gap:8px;margin-top:12px}
-.company-actions button{flex:1;padding:9px 4px;font-size:10px}
-.market-top{display:flex;justify-content:space-between;align-items:center;
-margin-bottom:20px}
-.market-top p{font-size:12px;color:var(--muted);margin-top:6px}
-.free-banner{
-  padding:28px;border-radius:15px;color:white;
-  background:linear-gradient(115deg,#1646bd,#3985fa);
-  margin-bottom:22px;position:relative;overflow:hidden;
-}
-.free-banner:after{content:"₿";position:absolute;right:35px;top:-30px;
-font-size:170px;font-weight:800;color:rgba(255,255,255,.08)}
-.free-banner h2{font-size:24px;position:relative;z-index:1}
-.free-banner p{font-size:12px;color:#d9e6ff;margin-top:9px;position:relative;z-index:1}
-.reward-layout{display:grid;grid-template-columns:1.4fr .8fr;gap:18px}
-.reward-item{display:flex;align-items:center;gap:14px;padding:15px 0;
-border-bottom:1px solid var(--border)}
-.reward-item:last-child{border:0}
-.reward-icon{width:43px;height:43px;border-radius:12px;background:#fff4df;
-color:#d69a25;display:grid;place-items:center;font-size:19px}
-.reward-info{flex:1}
-.reward-info strong{font-size:12px}
-.reward-info p{font-size:10px;color:var(--muted);margin-top:5px}
-.reward-count{font-size:11px;color:var(--blue);font-weight:800}
-.cooldown{background:#f2f6ff;border-radius:12px;padding:20px;margin-top:15px}
-.cooldown h3{font-size:13px}
-.cooldown p{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6}
-.progress{height:7px;background:#e2e9f7;border-radius:10px;margin-top:14px;overflow:hidden}
-.progress span{height:100%;background:var(--blue);display:block;border-radius:10px;transition:.4s}
-.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:11px;font-weight:700;margin-bottom:8px}
-.form-group input{width:100%;padding:12px;border:1px solid var(--border);
-border-radius:9px;outline:none;font-size:12px;background:#fafbfe}
-.form-group input:focus{border-color:var(--blue)}
-.profile-avatar{width:85px;height:85px;border-radius:50%;background:#e6efff;
-color:var(--blue);display:grid;place-items:center;font-size:30px;font-weight:800;
-margin-bottom:15px}
-.loan-box{background:#f5f8ff;padding:18px;border-radius:12px;margin-top:12px}
-.loan-box strong{font-size:23px;display:block;margin-top:9px}
-.loan-box small{font-size:10px;color:var(--muted)}
-.section-title{font-size:20px;font-weight:800;margin-bottom:7px}
-.section-desc{font-size:12px;color:var(--muted);margin-bottom:23px}
-.modal-bg{position:fixed;inset:0;background:rgba(15,27,50,.45);
-display:none;place-items:center;z-index:100;padding:15px}
-.modal-bg.show{display:grid}
-.modal{background:white;border-radius:17px;padding:25px;width:100%;
-max-width:400px;box-shadow:0 20px 70px #14264b30;animation:appear .2s}
-.modal h2{font-size:18px;margin-bottom:8px}
-.modal p{font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:18px}
-.modal-actions{display:flex;gap:9px;margin-top:17px}
-.modal-actions button{flex:1}
-.notice{font-size:11px;color:var(--muted);margin-top:12px;line-height:1.7}
-.toast{position:fixed;bottom:25px;right:25px;background:#17233b;
-color:white;padding:14px 20px;border-radius:10px;font-size:12px;
-opacity:0;transform:translateY(15px);transition:.3s;z-index:200;
-pointer-events:none;max-width:90vw}
-.toast.show{opacity:1;transform:translateY(0)}
-.mobile-menu{display:none;border:0;background:none;font-size:22px}
-.auth-screen{position:fixed;inset:0;z-index:300;background:#f5f7fb;
-display:none;align-items:center;justify-content:center;padding:20px}
-.auth-screen.show{display:flex}
-.auth-card{background:white;width:100%;max-width:400px;padding:30px;
-border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}
-.auth-card h2{font-size:24px;margin:20px 0 7px}
-.auth-card>p{font-size:12px;color:var(--muted);margin-bottom:22px}
-.auth-card .action-btn{width:100%;padding:13px}
-.auth-switch{font-size:11px;text-align:center;margin-top:18px;color:var(--muted)}
-.auth-switch a{color:var(--blue);font-weight:700;cursor:pointer}
-@media(max-width:1050px){
- .stats{grid-template-columns:repeat(2,1fr)}
- .company-grid{grid-template-columns:repeat(2,1fr)}
- .grid-main{grid-template-columns:1fr}
-}
-@media(max-width:700px){
- .sidebar{transform:translateX(-100%);transition:.3s}
- .sidebar.open{transform:translateX(0)}
- .main{margin-left:0;width:100%}
- .topbar{height:65px;padding:0 17px}
- .mobile-menu{display:block}
- .content{padding:20px 14px 50px}
- .stats{gap:9px}
- .stat-card{padding:13px}
- .stat-value{font-size:20px}
- .welcome{align-items:flex-start}
- .date-pill{display:none}
- .company-grid{grid-template-columns:1fr 1fr;gap:9px}
- .company{padding:13px}
- .company-price{font-size:17px}
- .reward-layout,.profile-grid{grid-template-columns:1fr}
- .profile-hero{padding:20px;gap:12px}
- .profile-hero h2{font-size:18px}
- .table th,.table td{padding:12px 5px;font-size:10px}
- .hide-mobile{display:none}
- .card{padding:15px}
- .toast{right:5%;bottom:15px}
-}
+body.light{--bg:#f4f6fa;--panel:#fff;--panel2:#f7f8fb;--line:#e6e9f0;--text:#161b26;--muted:#737d90;--shadow:0 12px 35px rgba(30,43,70,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;min-height:100vh;transition:background .25s,color .25s}
+button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+.app{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:248px;padding:24px 16px;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:30;transition:transform .25s}
+.brand{display:flex;align-items:center;gap:12px;padding:0 10px 30px}.brand img{width:43px;height:43px;border-radius:13px;object-fit:cover}.brand-name{font:700 21px "Space Grotesk";letter-spacing:-.8px}.brand-name span{color:var(--accent2)}
+.nav-label{padding:12px 12px 8px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:1.4px}
+.nav-btn{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:var(--muted);padding:12px 13px;border-radius:11px;text-align:left;font-size:13px;font-weight:700;margin:3px 0;transition:.2s}
+.nav-btn .ico{width:22px;text-align:center;font-size:17px}.nav-btn:hover,.nav-btn.active{background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent2)}
+.side-bottom{margin-top:auto}.account-mini{display:flex;align-items:center;gap:10px;padding:12px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;min-width:0}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--accent);color:white;display:grid;place-items:center;font-weight:800;overflow:hidden;flex:none}.avatar img{width:100%;height:100%;object-fit:cover}
+.account-mini strong{font-size:12px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.account-mini small{font-size:10px;color:var(--muted)}
+.main{margin-left:248px;min-width:0}.topbar{height:76px;position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px}
+.top-left{display:flex;align-items:center;gap:14px}.page-title{font:700 19px "Space Grotesk"}.top-actions{display:flex;align-items:center;gap:12px}.demo-pill{font-size:10px;font-weight:800;letter-spacing:.7px;color:var(--green);background:color-mix(in srgb,var(--green) 12%,transparent);padding:8px 10px;border-radius:30px}
+.icon-btn{width:39px;height:39px;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:11px;font-size:16px}.mobile-menu{display:none}
+.content{max-width:1500px;padding:30px 34px 70px;margin:auto}.view{display:none;animation:fade .28s ease}.view.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.welcome{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:23px}.eyebrow{font-size:10px;color:var(--accent2);font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.welcome h1{font:700 clamp(24px,3vw,34px) "Space Grotesk";margin:7px 0 5px;letter-spacing:-1.2px}.welcome p,.muted{color:var(--muted);font-size:12px;margin:0;line-height:1.6}
+.date-chip{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 13px;color:var(--muted);font-size:11px;white-space:nowrap}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 30px;border-radius:22px;background:linear-gradient(115deg,#7f2028,#d84949 58%,#ef7770);color:white;position:relative;overflow:hidden;margin-bottom:20px;box-shadow:0 15px 40px rgba(191,52,62,.16)}
+.hero:after{content:"";position:absolute;width:290px;height:290px;border:42px solid #ffffff18;border-radius:50%;right:4%;top:-190px}.hero h2{font:700 25px "Space Grotesk";margin:0 0 8px;position:relative;z-index:1}.hero p{font-size:12px;color:#ffe6e6;margin:0;position:relative;z-index:1}.hero .btn{position:relative;z-index:1;background:white;color:#9e292f}
+.btn{border:0;border-radius:10px;background:var(--accent);color:#fff;padding:11px 15px;font-size:11px;font-weight:800;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.btn.ghost{background:var(--panel);border:1px solid var(--line);color:var(--text)}.btn.soft{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent2)}.btn.green{background:var(--green);color:#07150f}.btn.small{padding:8px 11px;font-size:10px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:19px;box-shadow:var(--shadow);min-width:0}.stat-card{position:relative;overflow:hidden}.stat-card:after{content:"";position:absolute;width:90px;height:90px;border:15px solid color-mix(in srgb,var(--accent) 9%,transparent);border-radius:50%;right:-40px;bottom:-45px}
+.stat-top{display:flex;align-items:center;justify-content:space-between}.stat-label{font-size:11px;color:var(--muted);font-weight:700}.stat-icon{width:34px;height:34px;border-radius:10px;background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent2);display:grid;place-items:center;font-weight:800}.stat-value{font:700 25px "Space Grotesk";margin-top:14px;letter-spacing:-.8px}.stat-foot{font-size:10px;color:var(--muted);margin-top:5px}
+.two-col{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.card-head h3{font:700 14px "Space Grotesk";margin:0}.card-head small{font-size:10px;color:var(--muted)}
+.brand-banner{display:flex;align-items:center;gap:11px;padding:7px 14px 7px 9px;border-radius:13px;background:linear-gradient(135deg,#242a35,#10141c 55%,#303744);border:1px solid #626d7b;box-shadow:inset 0 1px 0 #ffffff24,0 5px 18px #0005;position:relative;overflow:hidden}.brand-banner:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,#ffffff08 0 1px,transparent 1px 4px),linear-gradient(90deg,transparent,#ffffff0b,transparent);pointer-events:none}.brand-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#f7fbff,#9da9b8);display:grid;place-items:center;color:#111722;font-weight:1000;font-size:19px;box-shadow:inset 0 1px 3px #fff}.brand-name{font:800 16px "Space Grotesk";letter-spacing:.3px;color:#fff}.brand-tag{font-size:8px;letter-spacing:2px;color:#aeb9c8;margin-top:2px}.discord-link{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:#5865f2;color:#fff;text-decoration:none;box-shadow:0 5px 16px #5865f244}.discord-link svg{width:20px;height:20px;fill:currentColor}.claim-overlay{position:fixed;inset:0;z-index:120;background:radial-gradient(circle at 50% 40%,#182d48,#05070d 70%);display:none;align-items:center;justify-content:center;color:#fff;text-align:center;padding:24px}.claim-overlay.show{display:flex}.claim-box{width:min(440px,100%);padding:34px 25px;border:1px solid #ffffff24;border-radius:24px;background:#111a28eF;box-shadow:0 30px 100px #0009}.claim-count{font:800 clamp(60px,15vw,100px) "Space Grotesk";line-height:1.1;color:#6de6a1}.claim-ring{width:190px;height:190px;border-radius:50%;border:7px solid #ffffff1c;border-top-color:#6de6a1;display:grid;place-items:center;margin:22px auto;animation:claimSpin 2s linear infinite}@keyframes claimSpin{to{transform:rotate(360deg)}}.claim-ring span{font:800 42px "Space Grotesk";animation:claimSpin 2s linear infinite reverse}.claim-close{position:absolute;right:22px;top:22px;width:44px;height:44px;border-radius:50%;border:1px solid #ffffff55;background:#ffffff14;color:white;font-size:22px;cursor:pointer}.chart-area{height:225px;position:relative}.chart-area canvas{width:100%;height:100%}
+.quick-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.quick-row:last-child{border:0}.quick-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:var(--panel2);font-size:17px}.quick-copy{flex:1;min-width:0}.quick-copy b{font-size:12px}.quick-copy small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.section-title{font:700 24px "Space Grotesk";margin:0 0 7px;letter-spacing:-.7px}.section-desc{font-size:12px;color:var(--muted);margin:0 0 22px;line-height:1.6}
+.market-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.stock-card{transition:.2s}.stock-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}.stock-head{display:flex;align-items:center;justify-content:space-between}.company-logo{width:40px;height:40px;border-radius:12px;background:var(--panel2);display:grid;place-items:center;font-weight:900;font-size:15px;color:var(--text);border:1px solid var(--line)}.stock-name{font-size:13px;font-weight:800;margin-top:13px}.stock-symbol{font-size:10px;color:var(--muted);margin-top:3px}.stock-price{font:700 22px "Space Grotesk";margin-top:15px}.stock-change{font-size:10px;margin-top:5px;font-weight:800}.positive{color:var(--green)}.negative{color:var(--red)}.price-track{height:5px;background:var(--panel2);border-radius:10px;overflow:hidden;margin:13px 0}.price-track span{display:block;height:100%;width:50%;background:var(--green);transition:width .4s}.stock-actions{display:flex;gap:8px}.stock-actions .btn{flex:1}
+.notice{padding:12px 14px;background:color-mix(in srgb,var(--blue) 9%,transparent);border:1px solid color-mix(in srgb,var(--blue) 20%,var(--line));border-radius:12px;color:var(--muted);font-size:10px;line-height:1.6;margin-bottom:16px}
+.table-wrap{overflow-x:auto}.data-table{width:100%;border-collapse:collapse;white-space:nowrap}.data-table th{text-align:left;color:var(--muted);font-size:9px;letter-spacing:.8px;padding:12px 9px;border-bottom:1px solid var(--line)}.data-table td{font-size:11px;padding:13px 9px;border-bottom:1px solid var(--line)}.data-table tr:last-child td{border:0}
+.game-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.game-card{display:flex;flex-direction:column;min-height:190px;transition:.2s}.game-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}.game-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:var(--panel2);font-size:21px;margin-bottom:13px}.game-card h3{font:700 14px "Space Grotesk";margin:0 0 6px}.game-card p{font-size:10px;color:var(--muted);line-height:1.5;margin:0 0 14px;flex:1}.game-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:10px;color:var(--muted)}.game-meta b{color:var(--gold)}
+.reward-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.streak-list{display:grid;gap:9px}.streak-day{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}.streak-day.current{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--panel2))}.day-no{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--panel);font-weight:800;font-size:11px}.day-info{flex:1}.day-info b{font-size:11px}.day-info small{display:block;font-size:9px;color:var(--muted);margin-top:3px}.day-reward{font-size:11px;font-weight:800;color:var(--gold)}
+.progress{height:7px;border-radius:9px;background:var(--panel2);overflow:hidden;margin-top:13px}.progress span{height:100%;display:block;background:var(--accent);border-radius:9px;transition:width .3s}
+.profile-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}.profile-big{display:flex;align-items:center;gap:15px}.profile-pic{width:86px;height:86px;border-radius:22px;background:var(--panel2);display:grid;place-items:center;font:700 26px "Space Grotesk";overflow:hidden;border:1px solid var(--line)}.profile-pic img{width:100%;height:100%;object-fit:cover}.form-group{margin:0 0 14px}.form-group label{display:block;font-size:10px;font-weight:800;color:var(--muted);margin-bottom:7px}.field{width:100%;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:10px;padding:12px 13px;font-size:12px;outline:none}.field:focus{border-color:var(--accent)}textarea.field{min-height:95px;resize:vertical}
+.game-modal{position:fixed;inset:0;background:#05070bd9;z-index:80;display:none;place-items:center;padding:16px}.game-modal.show{display:grid}.modal-box{width:min(100%,460px);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 30px 100px #0008}.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.modal-top h2{font:700 20px "Space Grotesk";margin:0}.game-stage{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:25px;text-align:center;min-height:190px;display:grid;place-items:center}.stage-big{font:700 42px "Space Grotesk";margin:5px}.stage-copy{font-size:11px;color:var(--muted);line-height:1.5}.stage-button{min-width:160px;min-height:58px;border:0;border-radius:14px;background:var(--accent);color:white;font:700 16px "Space Grotesk";padding:12px 20px;margin-top:12px}.close-x{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;width:34px;height:34px}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stars{display:flex;gap:7px;margin:10px 0 16px}.star{font-size:25px;color:var(--muted);background:none;border:0;padding:0}.star.selected{color:var(--gold)}
+.threshold{display:flex;align-items:center;justify-content:space-between;gap:15px}.threshold strong{font:700 24px "Space Grotesk"}.withdraw-progress{height:10px;background:var(--panel2);border-radius:20px;overflow:hidden;margin:15px 0}.withdraw-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));width:5%;transition:width .3s}
+.toast{position:fixed;right:22px;bottom:22px;z-index:100;background:var(--text);color:var(--bg);padding:13px 17px;border-radius:12px;font-size:11px;font-weight:700;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;max-width:90vw}.toast.show{opacity:1;transform:none}
+.footer-note{font-size:10px;color:var(--muted);line-height:1.65;margin-top:18px}
+@media(max-width:1100px){.stats{grid-template-columns:repeat(2,1fr)}.market-grid,.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}}
+@media(max-width:720px){.sidebar{transform:translateX(-100%);box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.mobile-menu{display:inline-grid;place-items:center}.topbar{height:65px;padding:0 15px}.content{padding:21px 14px 55px}.welcome{align-items:flex-start;flex-direction:column}.date-chip{display:none}.hero{padding:22px;align-items:flex-start;flex-direction:column}.hero h2{font-size:21px}.stats{gap:9px}.card{padding:15px}.stat-value{font-size:21px}.market-grid,.game-grid{grid-template-columns:1fr 1fr;gap:9px}.stock-card{padding:13px}.stock-price{font-size:18px}.reward-grid,.profile-grid,.review-grid{grid-template-columns:1fr}.threshold{align-items:flex-start;flex-direction:column}.top-actions{gap:7px}.demo-pill{font-size:9px}.page-title{font-size:16px}.brand-name{font-size:14px}.brand-tag{font-size:7px}}
+@media(max-width:420px){.stats{grid-template-columns:1fr 1fr}.market-grid,.game-grid{grid-template-columns:1fr}.topbar{padding:0 11px}.content{padding-inline:11px}}
 </style>
 </head>
-
 <body>
-
 <div class="app">
-
 <aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <div class="brand-logo">
-      <svg viewBox="0 0 100 100" fill="none">
-        <path d="M8 69 A43 43 0 0 1 83 31 L72 42 A30 30 0 0 0 18 69Z" fill="white"/>
-        <path d="M78 33 L92 69 L78 69 L70 44Z" fill="white"/>
-        <path d="M43 66 L78 31 L55 72 Q49 83 40 76 Q34 70 43 66Z" fill="white"/>
-        <circle cx="44" cy="72" r="4" fill="#2563eb"/>
-      </svg>
-    </div>
-    <div class="brand-name">Fast <span>Coin</span></div>
-  </div>
-
-  <div class="nav-label">MAIN MENU</div>
-  <button class="nav-btn active" data-page="home"><span>⌂</span> Dashboard</button>
-  <button class="nav-btn" data-page="market"><span>↗</span> Market</button>
-  <button class="nav-btn" data-page="coins"><span>◉</span> Free Coins</button>
-  <button class="nav-btn" data-page="leaderboard"><span>♛</span> Leaderboard</button>
-
-  <div class="nav-label">ACCOUNT</div>
-  <button class="nav-btn" data-page="profile"><span>♙</span> My Profile</button>
-  <button class="nav-btn" data-page="loans"><span>▤</span> Virtual Loans</button>
-
-  <div class="sidebar-bottom">
-    <div class="account-card">
-      <div class="avatar" id="sideAvatar">FC</div>
-      <div style="min-width:0">
-        <div class="account-name" id="sideName">Fast Coin User</div>
-        <div class="account-email" id="sideEmail">Demo Account</div>
-      </div>
-    </div>
-    <button class="nav-btn" onclick="logout()" style="margin-top:15px">
-      <span>↪</span> Sign Out
-    </button>
-  </div>
+ <div class="brand"><img src="data:image/png;base64,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" alt="Speed Coin logo"><div class="brand-name">Speed <span>Coin</span></div></div>
+ <div class="nav-label">WORKSPACE</div>
+ <button class="nav-btn active" data-page="home"><span class="ico">⌂</span>Dashboard</button>
+ <button class="nav-btn" data-page="market"><span class="ico">↗</span>Market</button>
+ <button class="nav-btn" data-page="games"><span class="ico">▣</span>Games</button>
+ <button class="nav-btn" data-page="coins"><span class="ico">◉</span>Free Coins</button>
+ <button class="nav-btn" data-page="leaderboard"><span class="ico">♛</span>Leaderboard</button>
+ <div class="nav-label">ACCOUNT</div>
+ <button class="nav-btn" data-page="profile"><span class="ico">♙</span>My Profile</button>
+ <button class="nav-btn" data-page="reviews"><span class="ico">✎</span>Reviews</button>
+ <button class="nav-btn" data-page="withdraw"><span class="ico">⇧</span>Withdrawals</button>
+ <div class="side-bottom"><div class="account-mini"><div class="avatar" id="sideAvatar">SC</div><div style="min-width:0"><strong id="sideName">Speed Coin Player</strong><small>Local demo profile</small></div></div></div>
 </aside>
-
-<div class="main">
-
-<header class="topbar">
-  <div style="display:flex;align-items:center;gap:13px">
-    <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
-    <div class="page-title" id="pageTitle">Dashboard</div>
-  </div>
-  <div class="top-right">
-    <span class="online">System Online</span>
-    <div class="top-avatar" id="topAvatar">FC</div>
-  </div>
-</header>
-
+<main class="main">
+<header class="topbar"><div class="top-left"><button class="icon-btn mobile-menu" onclick="toggleSidebar()" aria-label="Open menu">☰</button><div class="brand-banner"><div class="brand-mark">S</div><div><div class="brand-name">SPEED COIN</div><div class="brand-tag">PLAY · TRADE · LEVEL UP</div></div></div><div class="page-title" id="pageTitle">Dashboard</div></div><div class="top-actions"><a class="discord-link" href="https://discord.gg/TcEFQDYr7v" target="_blank" rel="noopener" aria-label="Join Speed Coin Discord" title="Join Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.7 5.2A18.3 18.3 0 0 0 15.2 3.8l-.6 1.2a16.7 16.7 0 0 0-5.2 0l-.6-1.2a18.3 18.3 0 0 0-4.5 1.4C1.5 9.4.7 13.5 1.1 17.6a18.4 18.4 0 0 0 5.6 2.8l1.2-2a11.8 11.8 0 0 1-1.9-.9l.5-.4a13.1 13.1 0 0 0 11 0l.5.4a11.8 11.8 0 0 1-1.9.9l1.2 2a18.4 18.4 0 0 0 5.6-2.8c.5-4.8-.8-8.9-3.2-12.4ZM8.6 14.8c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.8 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg></a><button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">◐</button><div class="avatar" id="topAvatar">SC</div></div></header>
 <div class="content">
-
-<!-- HOME -->
 <section class="view active" id="home">
-  <div class="welcome">
-    <div>
-      <h2>Hello, <span id="welcomeName">Trader</span> 👋</h2>
-      <p>Welcome back! Here's your Fast Coin overview.</p>
-    </div>
-    <div class="date-pill" id="todayDate"></div>
+ <div class="welcome"><div><div class="eyebrow">Your game. Your pace.</div><h1>Welcome back, <span id="welcomeName">Player</span>.</h1><p>Build your streak, test your timing and explore the virtual market.</p></div><div class="date-chip" id="todayDate"></div></div>
+ <div class="hero"><div><div class="eyebrow" style="color:#ffd2d2">SPEED COIN ARENA</div><h2>Make every second count.</h2><p>Play skill-based mini games and grow your virtual score.</p></div><button class="btn" onclick="showPage('games')">Explore games&nbsp; →</button></div>
+ <div class="stats">
+  <div class="card stat-card"><div class="stat-top"><span class="stat-label">Virtual wallet</span><span class="stat-icon">₹</span></div><div class="stat-value" id="walletValue">₹500</div><div class="stat-foot">Starting demo balance</div></div>
+  <div class="card stat-card"><div class="stat-top"><span class="stat-label">Coins</span><span class="stat-icon">◉</span></div><div class="stat-value" id="coinValue">0</div><div class="stat-foot">Virtual coins collected</div></div>
+  <div class="card stat-card"><div class="stat-top"><span class="stat-label">Earned in games</span><span class="stat-icon">↗</span></div><div class="stat-value" id="earnedValue">₹0</div><div class="stat-foot">Before demo deductions</div></div>
+  <div class="card stat-card"><div class="stat-top"><span class="stat-label">Your score</span><span class="stat-icon">★</span></div><div class="stat-value" id="scoreValue">0</div><div class="stat-foot">Performance points</div></div>
+ </div>
+ <div class="two-col">
+  <div class="card"><div class="card-head"><div><h3>Wallet activity</h3><small>Illustrative balance movement</small></div><span class="demo-pill">LIVE DEMO</span></div><div class="chart-area"><canvas id="walletChart"></canvas></div></div>
+  <div class="card"><div class="card-head"><h3>Quick launch</h3><small>Jump back in</small></div>
+   <div class="quick-row"><div class="quick-icon">⚡</div><div class="quick-copy"><b>Quick Tap</b><small>Tap as many times as you can in 10 seconds</small></div><button class="btn small" onclick="startGame('tap')">Play</button></div>
+   <div class="quick-row"><div class="quick-icon">🎯</div><div class="quick-copy"><b>Perfect Stop</b><small>Stop the timer as close to 5 seconds as possible</small></div><button class="btn small" onclick="startGame('stop')">Play</button></div>
+   <div class="quick-row"><div class="quick-icon">🎁</div><div class="quick-copy"><b>Daily streak</b><small>Claim your next consecutive reward</small></div><button class="btn small" onclick="showPage('coins')">Claim</button></div>
   </div>
-
-  <div class="profile-hero">
-    <div>
-      <h2>Your financial playground</h2>
-      <p>Explore the virtual market, earn coins and improve your score.</p>
-    </div>
-    <button class="white-btn" onclick="showPage('market')">Explore Market →</button>
-  </div>
-
-  <div class="stats">
-    <div class="card stat-card">
-      <div class="stat-head">
-        <span class="stat-label">Main Wallet</span>
-        <div class="stat-icon ic-blue">₹</div>
-      </div>
-      <div class="stat-value" id="walletValue">₹0</div>
-      <div class="stat-change">Virtual wallet balance</div>
-    </div>
-
-    <div class="card stat-card">
-      <div class="stat-head">
-        <span class="stat-label">Total Coins</span>
-        <div class="stat-icon ic-orange">◉</div>
-      </div>
-      <div class="stat-value" id="coinValue">0</div>
-      <div class="stat-change">Available virtual coins</div>
-    </div>
-
-    <div class="card stat-card">
-      <div class="stat-head">
-        <span class="stat-label">Your Score</span>
-        <div class="stat-icon ic-purple">★</div>
-      </div>
-      <div class="stat-value" id="scoreValue">0</div>
-      <div class="stat-change">Performance points</div>
-    </div>
-
-    <div class="card stat-card">
-      <div class="stat-head">
-        <span class="stat-label">Followers</span>
-        <div class="stat-icon ic-green">♙</div>
-      </div>
-      <div class="stat-value" id="followersValue">0</div>
-      <div class="stat-change">Community followers</div>
-    </div>
-  </div>
-
-  <div class="grid-main">
-    <div class="card">
-      <div class="card-heading">
-        <div>
-          <h3>Market Overview</h3>
-          <small>Virtual market activity</small>
-        </div>
-        <button class="chart-btn active">LIVE</button>
-      </div>
-      <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
-    </div>
-
-    <div class="card">
-      <div class="card-heading">
-        <h3>Quick Actions</h3>
-        <small>Get started</small>
-      </div>
-      <div class="reward-item">
-        <div class="reward-icon">◉</div>
-        <div class="reward-info">
-          <strong>Earn Free Coins</strong>
-          <p>Claim your daily virtual rewards</p>
-        </div>
-        <button class="action-btn" onclick="showPage('coins')">Open</button>
-      </div>
-      <div class="reward-item">
-        <div class="reward-icon" style="background:#eaf1ff;color:#2563eb">↗</div>
-        <div class="reward-info">
-          <strong>Explore Market</strong>
-          <p>Trade with virtual coins</p>
-        </div>
-        <button class="action-btn" onclick="showPage('market')">Open</button>
-      </div>
-      <div class="reward-item">
-        <div class="reward-icon" style="background:#f2edff;color:#8561d9">♛</div>
-        <div class="reward-info">
-          <strong>Leaderboard</strong>
-          <p>Compare community scores</p>
-        </div>
-        <button class="action-btn" onclick="showPage('leaderboard')">Open</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card leaderboard">
-    <div class="card-heading">
-      <div>
-        <h3>Top Players</h3>
-        <small>Community leaderboard</small>
-      </div>
-      <button class="action-btn outline-btn" onclick="showPage('leaderboard')">View All →</button>
-    </div>
-    <div style="overflow-x:auto">
-      <table class="table">
-        <thead><tr>
-          <th>RANK</th><th>PLAYER</th><th>BALANCE</th>
-          <th>SCORE</th><th>FOLLOWERS</th>
-        </tr></thead>
-        <tbody id="homeLeaderboard"></tbody>
-      </table>
-    </div>
-  </div>
+ </div>
+ <div class="card" style="margin-top:16px"><div class="card-head"><h3>Withdrawal progress</h3><small>Demo eligibility tracker</small></div><div class="threshold"><div><div class="stat-label">Current wallet</div><strong id="homeWithdrawBalance">₹500</strong></div><div><div class="stat-label">Minimum threshold</div><strong>₹10,000</strong></div></div><div class="withdraw-progress"><span id="homeWithdrawBar"></span></div><p class="muted" id="homeWithdrawText">You need ₹9,500 more to reach the demo threshold.</p></div>
+ <p class="footer-note">Speed Coin is a fictional financial-gaming prototype. Balances, prices, coins, rewards and withdrawals are simulated and have no cash value.</p>
 </section>
 
-<!-- MARKET -->
 <section class="view" id="market">
-  <div class="market-top">
-    <div>
-      <h2 class="section-title">Virtual Market</h2>
-      <p class="section-desc" style="margin-bottom:0">Practice trading using virtual coins. No real money involved.</p>
-    </div>
-    <div class="date-pill">● Market Simulated</div>
-  </div>
-
-  <div class="stats" style="grid-template-columns:repeat(3,1fr)">
-    <div class="card stat-card">
-      <div class="stat-label">Available Wallet</div>
-      <div class="stat-value" id="marketWallet">₹0</div>
-    </div>
-    <div class="card stat-card">
-      <div class="stat-label">Total Trades</div>
-      <div class="stat-value" id="tradeCount">0</div>
-    </div>
-    <div class="card stat-card">
-      <div class="stat-label">Open Positions</div>
-      <div class="stat-value" id="positionCount">0</div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px">
-    <div class="card-heading">
-      <div><h3>Companies</h3><small>Illustrative simulated prices</small></div>
-      <span style="font-size:10px;color:var(--green)">● Updating</span>
-    </div>
-    <div class="company-grid" id="companyGrid"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-heading"><h3>Your Open Positions</h3><small>Virtual positions</small></div>
-    <div style="overflow-x:auto">
-      <table class="table">
-        <thead><tr><th>COMPANY</th><th>TYPE</th><th>ENTRY</th><th>QUANTITY</th><th>CURRENT</th><th>VALUE</th><th>ACTION</th></tr></thead>
-        <tbody id="positionsTable"></tbody>
-      </table>
-    </div>
-  </div>
+ <h2 class="section-title">Virtual market</h2><p class="section-desc">Watch fictional price movements and practise position sizing. These are not live exchange quotes or real securities.</p>
+ <div class="notice">Demo market cycle: assets follow a gradual upward-only trend for a 35-minute session. This is a scripted game mechanic, not a forecast or real market data. Share an open position once to collect a small virtual bonus.</div>
+ <div class="stats" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+  <div class="card"><div class="stat-label">Available wallet</div><div class="stat-value" id="marketWallet">₹500</div></div>
+  <div class="card"><div class="stat-label">Trades completed</div><div class="stat-value" id="tradeCount">0</div></div>
+  <div class="card"><div class="stat-label">Open positions</div><div class="stat-value" id="positionCount">0</div></div>
+ </div>
+ <div class="market-grid" id="marketGrid"></div>
+ <div class="card" style="margin-top:16px"><div class="card-head"><h3>Open positions</h3><small>Close a position to realise its simulated result</small></div><div class="table-wrap"><table class="data-table"><thead><tr><th>COMPANY</th><th>ENTRY</th><th>LIVE PRICE</th><th>INVESTED</th><th>VALUE</th><th>RESULT</th><th>SHARE</th><th></th></tr></thead><tbody id="positionsBody"></tbody></table></div></div>
 </section>
 
-<!-- FREE COINS -->
+<section class="view" id="games">
+ <h2 class="section-title">Games arena</h2><p class="section-desc">Ten quick challenges with different timing mechanics. Rewards are virtual points and demo wallet credits only.</p>
+ <div class="game-grid" id="gameGrid"></div>
+</section>
+
 <section class="view" id="coins">
-  <div class="free-banner">
-    <h2>Free Coins Center</h2>
-    <p>Complete reward activities to earn virtual coins and increase your score.</p>
-    <p style="margin-top:20px">Daily reward limit: <strong>10 claims</strong></p>
-  </div>
-
-  <div class="reward-layout">
-    <div class="card">
-      <div class="card-heading">
-        <div><h3>Daily Reward Activities</h3><small>Demo reward activities, not actual advertisements</small></div>
-        <span style="color:var(--blue);font-size:11px;font-weight:800" id="rewardCounter">0 / 10</span>
-      </div>
-
-      <div id="rewardList"></div>
-
-      <div class="cooldown">
-        <h3>Reward Session Status</h3>
-        <p id="cooldownText">You can start your reward session.</p>
-        <div class="progress"><span id="rewardProgress" style="width:0%"></span></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-heading"><h3>Reward Summary</h3></div>
-      <div class="stat-label">Coins Earned Today</div>
-      <div class="stat-value" id="earnedToday">0</div>
-      <div class="stat-change">Virtual coins</div>
-      <div style="height:1px;background:var(--border);margin:20px 0"></div>
-      <div class="stat-label">Remaining Claims</div>
-      <div class="stat-value" id="remainingClaims">10</div>
-      <div class="stat-change">Daily reward allowance</div>
-      <div class="notice">
-        The demo simulates reward completion. For production ad monetization, integrate an approved rewarded-ad network and validate reward callbacks on a trusted backend.
-      </div>
-    </div>
-  </div>
+ <h2 class="section-title">Free coins & daily streak</h2><p class="section-desc">Claim one consecutive daily reward. Your streak resets after a missed day.</p>
+ <div class="reward-grid">
+  <div class="card"><div class="card-head"><h3>7-day reward ladder</h3><span class="demo-pill" id="streakLabel">DAY 1 / 7</span></div><div class="streak-list" id="streakList"></div><div class="progress"><span id="streakProgress" style="width:0%"></span></div><p class="muted" id="streakStatus" style="margin-top:10px">Your next reward is ready.</p></div>
+  <div class="card"><div class="card-head"><h3>Streak summary</h3></div><div class="stat-label">Coins claimed in this cycle</div><div class="stat-value" id="streakCoins">0</div><div style="height:18px"></div><div class="stat-label">Current streak</div><div class="stat-value" id="streakDays">0 days</div><div style="height:20px"></div><button class="btn" id="claimStreakBtn" onclick="beginCoinClaim()">Claim 10 coins</button><p class="footer-note">Rewards are demo credits. A new 7-day cycle starts after Day 7; missing a calendar day resets the consecutive streak.</p></div>
+ </div>
 </section>
 
-<!-- LEADERBOARD -->
 <section class="view" id="leaderboard">
-  <h2 class="section-title">Leaderboard</h2>
-  <p class="section-desc">See how you compare with other Fast Coin members.</p>
-  <div class="card">
-    <div class="card-heading">
-      <h3>Top Community Members</h3>
-      <span style="font-size:10px;color:var(--green)">Live data when connected</span>
-    </div>
-    <div style="overflow-x:auto">
-      <table class="table">
-        <thead><tr><th>RANK</th><th>PLAYER</th><th>BALANCE</th><th>SCORE</th><th>FOLLOWERS</th><th>STATUS</th></tr></thead>
-        <tbody id="fullLeaderboard"></tbody>
-      </table>
-    </div>
-  </div>
+ <h2 class="section-title">Leaderboard</h2><p class="section-desc">Sample players are fictional demo entries. Your score updates as you play.</p>
+ <div class="card"><div class="card-head"><h3>Top players</h3><small>Ranked by score</small></div><div class="table-wrap"><table class="data-table"><thead><tr><th>RANK</th><th>PLAYER</th><th>VIRTUAL WALLET</th><th>SCORE</th><th>STATUS</th></tr></thead><tbody id="leaderboardBody"></tbody></table></div></div>
 </section>
 
-<!-- PROFILE -->
 <section class="view" id="profile">
-  <h2 class="section-title">My Profile</h2>
-  <p class="section-desc">Manage your account and community details.</p>
-
-  <div class="profile-grid">
-    <div class="card">
-      <div class="profile-avatar" id="profileAvatar">FC</div>
-      <h3 id="profileDisplayName" style="font-size:17px">Fast Coin User</h3>
-      <p id="profileEmail" style="font-size:11px;color:var(--muted);margin-top:7px">Demo Account</p>
-      <div style="margin-top:25px">
-        <div class="stat-label">Member Status</div>
-        <div style="font-size:13px;font-weight:700;margin-top:7px;color:var(--green)">● Active Member</div>
-      </div>
-      <div style="margin-top:20px">
-        <div class="stat-label">User ID</div>
-        <div id="profileUID" style="font-size:10px;margin-top:7px;word-break:break-all">Demo</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-heading"><h3>Edit Profile</h3></div>
-      <div class="form-group">
-        <label>Display Name</label>
-        <input id="editName" maxlength="30" placeholder="Your name">
-      </div>
-      <div class="form-group">
-        <label>Username</label>
-        <input id="editUsername" maxlength="20" placeholder="Username">
-      </div>
-      <div class="form-group">
-        <label>Bio</label>
-        <input id="editBio" maxlength="120" placeholder="Tell us about yourself">
-      </div>
-      <button class="action-btn" onclick="saveProfile()">Save Changes</button>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:18px">
-    <h3 style="font-size:14px;margin-bottom:18px">Account Statistics</h3>
-    <div class="stats" style="margin:0">
-      <div><div class="stat-label">Wallet</div><div class="stat-value" id="profileWallet">₹0</div></div>
-      <div><div class="stat-label">Coins</div><div class="stat-value" id="profileCoins">0</div></div>
-      <div><div class="stat-label">Score</div><div class="stat-value" id="profileScore">0</div></div>
-      <div><div class="stat-label">Followers</div><div class="stat-value" id="profileFollowers">0</div></div>
-    </div>
-  </div>
+ <h2 class="section-title">My profile</h2><p class="section-desc">Customise your player name and profile picture. Changes are saved in this browser.</p>
+ <div class="profile-grid">
+  <div class="card"><div class="profile-big"><div class="profile-pic" id="profilePic">SC</div><div><h3 id="profileName" style="margin:0 0 5px;font:700 18px 'Space Grotesk'">Speed Coin Player</h3><p class="muted" id="profileHandle">@speedplayer</p></div></div><div style="margin-top:22px"><div class="stat-label">Player since</div><b id="memberSince" style="display:block;margin-top:6px;font-size:12px">Today</b></div><div style="margin-top:16px"><div class="stat-label">About</div><p class="muted" id="profileBio" style="margin-top:6px">Ready to play.</p></div></div>
+  <div class="card"><div class="card-head"><h3>Edit details</h3></div><div class="form-group"><label>DISPLAY NAME</label><input class="field" id="nameInput" maxlength="28" placeholder="Your player name"></div><div class="form-group"><label>USERNAME</label><input class="field" id="handleInput" maxlength="20" placeholder="username"></div><div class="form-group"><label>BIO</label><textarea class="field" id="bioInput" maxlength="140" placeholder="A short player bio"></textarea></div><div class="form-group"><label>PROFILE PICTURE</label><input class="field" id="avatarInput" type="file" accept="image/png,image/jpeg,image/webp"></div><button class="btn" onclick="saveProfile()">Save profile</button></div>
+ </div>
 </section>
 
-<!-- VIRTUAL LOANS -->
-<section class="view" id="loans">
-  <h2 class="section-title">Virtual Loans</h2>
-  <p class="section-desc">Practice managing virtual credit and repayments. No actual lending or financial obligations.</p>
-
-  <div class="stats" style="grid-template-columns:repeat(3,1fr)">
-    <div class="card"><div class="stat-label">Virtual Credit</div><div class="stat-value" id="loanTotal">₹0</div></div>
-    <div class="card"><div class="stat-label">Repaid</div><div class="stat-value" id="loanRepaid">₹0</div></div>
-    <div class="card"><div class="stat-label">Outstanding</div><div class="stat-value" id="loanOutstanding">₹0</div></div>
-  </div>
-
-  <div class="profile-grid">
-    <div class="card">
-      <h3 style="font-size:14px;margin-bottom:10px">Virtual Credit Simulator</h3>
-      <p class="notice" style="margin:0 0 17px">Practice with a simulated credit facility. This is not a real loan.</p>
-      <div class="form-group">
-        <label>Credit Amount</label>
-        <input id="loanAmount" type="number" min="100" max="5000" value="500">
-      </div>
-      <button class="action-btn" onclick="takeLoan()">Add Virtual Credit</button>
-    </div>
-    <div class="card">
-      <h3 style="font-size:14px;margin-bottom:10px">Virtual Repayment</h3>
-      <p class="notice" style="margin:0 0 17px">Repay your outstanding virtual credit from your virtual wallet.</p>
-      <div class="form-group">
-        <label>Repayment Amount</label>
-        <input id="repayAmount" type="number" min="1" value="100">
-      </div>
-      <button class="action-btn" onclick="repayLoan()">Repay Credit</button>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:18px">
-    <h3 style="font-size:14px;margin-bottom:10px">Credit Information</h3>
-    <p class="notice" style="margin:0">Virtual credit is added to a separate practice ledger. It does not create real debt, charge interest, or automatically deduct money from your wallet.</p>
-  </div>
+<section class="view" id="reviews">
+ <h2 class="section-title">Player reviews</h2><p class="section-desc">Share feedback about the Speed Coin demo. Submitting a review applies a clearly marked 50% simulated deduction to your game-earned balance.</p>
+ <div class="review-grid">
+  <div class="card"><div class="card-head"><h3>Write a review</h3><small>One review per submission</small></div><div class="form-group"><label>YOUR RATING</label><div class="stars" id="starPicker"><button class="star selected" data-star="1">★</button><button class="star selected" data-star="2">★</button><button class="star selected" data-star="3">★</button><button class="star selected" data-star="4">★</button><button class="star selected" data-star="5">★</button></div></div><div class="form-group"><label>YOUR FEEDBACK</label><textarea class="field" id="reviewText" maxlength="500" placeholder="What did you enjoy? What can we improve?"></textarea></div><button class="btn" onclick="submitReview()">Submit review</button><p class="footer-note">The deduction is a game mechanic for this prototype only. It is not GST, a tax charge, a government payment or a real financial transaction.</p></div>
+  <div class="card"><div class="card-head"><h3>Demo deduction preview</h3></div><div class="stat-label">Game-earned balance</div><div class="stat-value" id="reviewEarned">₹0</div><div style="height:16px"></div><div class="stat-label">50% simulated deduction</div><div class="stat-value" id="reviewTax" style="color:var(--red)">₹0</div><div style="height:16px"></div><div class="stat-label">Remaining game-earned balance</div><div class="stat-value" id="reviewRemaining">₹0</div><p class="footer-note">Submitting a review moves half of the current earned-game balance into a separate demo deduction counter. It does not represent actual GST.</p></div>
+ </div>
+ <div class="card" style="margin-top:16px"><div class="card-head"><h3>Community feedback</h3><small id="reviewCount">0 reviews</small></div><div id="reviewList"><p class="muted">No reviews yet. Be the first to share feedback.</p></div></div>
 </section>
 
-</div>
-</div>
-</div>
+<section class="view" id="withdraw">
+ <h2 class="section-title">Withdrawals</h2><p class="section-desc">Track the minimum wallet threshold for the demo withdrawal flow.</p>
+ <div class="card"><div class="threshold"><div><div class="stat-label">Your virtual wallet</div><strong id="withdrawBalance">₹500</strong></div><div><div class="stat-label">Minimum threshold</div><strong>₹10,000</strong></div></div><div class="withdraw-progress"><span id="withdrawBar"></span></div><p class="muted" id="withdrawHint">₹9,500 remaining to reach the threshold.</p><button class="btn" id="withdrawBtn" onclick="requestWithdrawal()" disabled>Request demo withdrawal</button><p class="footer-note">This is a visual prototype only. No bank details are collected and no real withdrawal, payout, UPI transfer or cash redemption is available.</p></div>
+ <div class="card" style="margin-top:16px"><div class="card-head"><h3>Withdrawal activity</h3><small>Local demo log</small></div><div id="withdrawHistory" class="muted">No demo withdrawal requests yet.</div></div>
+</section>
+</div></main></div>
 
-<!-- AUTH -->
-<div class="auth-screen" id="authScreen">
-  <div class="auth-card">
-    <div class="brand" style="padding:0">
-      <div class="brand-logo">
-        <svg viewBox="0 0 100 100" fill="none">
-          <path d="M8 69 A43 43 0 0 1 83 31 L72 42 A30 30 0 0 0 18 69Z" fill="white"/>
-          <path d="M78 33 L92 69 L78 69 L70 44Z" fill="white"/>
-          <path d="M43 66 L78 31 L55 72 Q49 83 40 76 Q34 70 43 66Z" fill="white"/>
-          <circle cx="44" cy="72" r="4" fill="#2563eb"/>
-        </svg>
-      </div>
-      <div class="brand-name">Fast <span>Coin</span></div>
-    </div>
-
-    <h2 id="authTitle">Welcome Back!</h2>
-    <p id="authDescription">Sign in to your Fast Coin account.</p>
-
-    <div class="form-group" id="authNameGroup" style="display:none">
-      <label>Your Name</label>
-      <input id="authName" placeholder="Enter your name">
-    </div>
-    <div class="form-group">
-      <label>Email Address</label>
-      <input id="authEmail" type="email" placeholder="you@example.com">
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input id="authPassword" type="password" placeholder="Enter password">
-    </div>
-    <button class="action-btn" id="authSubmit" onclick="submitAuth()">Sign In</button>
-    <div class="auth-switch">
-      <span id="authSwitchText">Don't have an account?</span>
-      <a onclick="toggleAuthMode()" id="authSwitchLink">Create account</a>
-    </div>
-    <div class="notice" id="authNotice">Demo mode is available without Firebase. Connect Firebase to enable secure cloud accounts.</div>
-  </div>
-</div>
-
-<!-- TRADE MODAL -->
-<div class="modal-bg" id="tradeModal">
-  <div class="modal">
-    <h2 id="tradeTitle">Virtual Trade</h2>
-    <p id="tradeDescription">Select your virtual trade amount.</p>
-    <div class="form-group">
-      <label>Amount (Virtual ₹)</label>
-      <input type="number" id="tradeAmount" min="1" value="100">
-    </div>
-    <div class="notice" id="tradeInfo"></div>
-    <div class="modal-actions">
-      <button class="action-btn outline-btn" onclick="closeModal()">Cancel</button>
-      <button class="action-btn" onclick="confirmTrade()">Confirm</button>
-    </div>
-  </div>
-</div>
-
+<div class="claim-overlay" id="claimOverlay" aria-modal="true" role="dialog"><button class="claim-close" onclick="cancelCoinClaim()" aria-label="Close claim timer">×</button><div class="claim-box"><div class="eyebrow" style="color:#8fe9b1">DAILY COIN CLAIM</div><h2 style="font:800 25px Space Grotesk;margin:10px 0">Stay on this screen</h2><p style="color:#b8c5d6;font-size:13px">Complete the 30-second timer to receive 10 virtual coins. Closing early cancels the claim.</p><div class="claim-ring"><span id="claimTimer">30</span></div><div style="font-size:12px;color:#aeb9c8">Your reward unlocks when the timer reaches zero</div></div></div><div class="game-modal" id="gameModal"><div class="modal-box"><div class="modal-top"><h2 id="modalTitle">Quick Tap</h2><button class="close-x" onclick="closeGame()">✕</button></div><p class="muted" id="modalDesc" style="margin:0 0 14px">Ready?</p><div class="game-stage" id="gameStage"></div><p class="footer-note" id="modalFoot">Virtual rewards only.</p></div></div>
 <div class="toast" id="toast"></div>
-
-<script type="module">
-// ======================================================
-// FIREBASE CONFIGURATION
-// Replace these values with your Firebase project config.
-// ======================================================
-
-import { initializeApp } from
-"https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-
-import {
-  getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,signOut,updateProfile
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-
-import {
-  getFirestore,doc,getDoc,setDoc,updateDoc,
-  collection,onSnapshot,serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.firebasestorage.app",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-
-let auth=null,db=null,firebaseReady=false;
-let currentUser=null;
-let authMode="login";
-let demoMode=true;
-let userData=null;
-let leaderboardUsers=[];
-let activeCompany=null;
-let tradeDirection="up";
-let mainChart=null;
-let companyCharts={};
-let marketInterval=null;
-let unsubLeaderboard=null;
-
+<script>
 const $=id=>document.getElementById(id);
-
-const defaults={
-  name:"Fast Coin User",
-  username:"fastuser",
-  bio:"Exploring the virtual market.",
-  wallet:10000,
-  coins:250,
-  score:100,
-  followers:0,
-  loanTotal:0,
-  loanRepaid:0,
-  trades:0,
-  positions:[],
-  rewards:{date:"",count:0,earned:0,lastSession:0},
-  createdAt:Date.now()
-};
-
+const STORAGE="speedcoin-redesign-v1";
+const STARTER={name:"Speed Coin Player",handle:"speedplayer",bio:"Ready to play.",wallet:500,coins:0,score:0,earned:0,deducted:0,trades:0,positions:[],streak:{last:"",day:0,coins:0},reviews:[],withdrawals:[],avatar:"",created:Date.now()};
+let data=loadData(),currentGame=null,gameTimer=null,gameStarted=0,taps=0,gameDone=false,selectedRating=5,marketTimer=null,claimInterval=null,marketStartedAt=Date.now(),marketBases={},chartValues=Array.from({length:24},(_,i)=>500+i*1.4);
 const companies=[
-  {id:"MSFT",name:"Microsoft",symbol:"MSFT",price:415,logo:"M",color:"#2563eb"},
-  {id:"GOOGL",name:"Google",symbol:"GOOGL",price:175,logo:"G",color:"#4285f4"},
-  {id:"AAPL",name:"Apple",symbol:"AAPL",price:230,logo:"A",color:"#64748b"},
-  {id:"AMZN",name:"Amazon",symbol:"AMZN",price:195,logo:"a",color:"#e99432"},
-  {id:"NVDA",name:"NVIDIA",symbol:"NVDA",price:145,logo:"N",color:"#16a34a"},
-  {id:"META",name:"Meta",symbol:"META",price:590,logo:"∞",color:"#2878df"}
+ {id:"AAPL",name:"Apple",symbol:"AAPL",logo:"A",price:228,color:"#9ba5b4"},
+ {id:"MSFT",name:"Microsoft",symbol:"MSFT",logo:"M",price:421,color:"#4c91e8"},
+ {id:"GOOGL",name:"Alphabet",symbol:"GOOGL",logo:"G",price:176,color:"#5c9dff"},
+ {id:"AMZN",name:"Amazon",symbol:"AMZN",logo:"a",price:198,color:"#f1a34b"},
+ {id:"NVDA",name:"NVIDIA",symbol:"NVDA",logo:"N",price:142,color:"#75b94c"},
+ {id:"META",name:"Meta",symbol:"META",logo:"∞",price:604,color:"#6e9de8"},
+ {id:"TSLA",name:"Tesla",symbol:"TSLA",logo:"T",price:244,color:"#e75c5c"},
+ {id:"NFLX",name:"Netflix",symbol:"NFLX",logo:"N",price:711,color:"#e34c57"},
+ {id:"ORCL",name:"Oracle",symbol:"ORCL",logo:"O",price:187,color:"#e16b62"}
 ];
-
-function money(value){
-  return "₹"+Number(value||0).toLocaleString("en-IN",{
-    maximumFractionDigits:2
-  });
+const games=[
+ {id:"tap",fee:10,icon:"⚡",name:"Quick Tap",desc:"Tap the button as many times as possible in 10 seconds.",mode:"10 sec sprint",reward:"up to ₹35"},
+ {id:"stop",fee:15,icon:"⏱️",name:"Perfect Stop",desc:"Stop the timer as close to exactly 5 seconds as possible.",mode:"Precision timing",reward:"up to ₹60"},
+ {id:"reaction",fee:20,icon:"🟢",name:"Reaction Rush",desc:"Wait for green, then click as fast as you can.",mode:"Reflex test",reward:"up to ₹80"},
+ {id:"memory",fee:20,icon:"🧠",name:"Memory Flash",desc:"Remember a short sequence of digits and enter it correctly.",mode:"Memory challenge",reward:"up to ₹90"},
+ {id:"hold",fee:15,icon:"✊",name:"Hold Master",desc:"Hold the button for exactly 3 seconds.",mode:"Hold timing",reward:"up to ₹50"},
+ {id:"countdown",fee:20,icon:"🚦",name:"Zero Countdown",desc:"Start the countdown and stop as close to zero as possible.",mode:"Countdown",reward:"up to ₹70"},
+ {id:"target",fee:25,icon:"🎯",name:"Target Click",desc:"Hit the moving target before the 8-second round ends.",mode:"Moving target",reward:"up to ₹65"},
+ {id:"math",fee:25,icon:"➗",name:"Rapid Math",desc:"Solve a quick arithmetic question before the timer expires.",mode:"Mental sprint",reward:"up to ₹75"},
+ {id:"sequence",fee:30,icon:"🔢",name:"Number Sequence",desc:"Find the missing number in a simple pattern.",mode:"Pattern puzzle",reward:"up to ₹100"},
+ {id:"jackpot",fee:40,icon:"🎰",name:"Lucky Spin",desc:"Spin once and see your random demo multiplier.",mode:"Random outcome",reward:"up to ₹150"}
+];
+function loadData(){try{return {...STARTER,...JSON.parse(localStorage.getItem(STORAGE)||"{}")}}catch(e){return {...STARTER}}}
+function save(){localStorage.setItem(STORAGE,JSON.stringify(data))}
+function money(v){return "₹"+Number(v||0).toLocaleString("en-IN",{maximumFractionDigits:2})}
+function num(v){return Number(v||0).toLocaleString("en-IN")}
+function today(){let d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")}
+function dayDiff(a,b){return Math.round((new Date(b+"T00:00:00")-new Date(a+"T00:00:00"))/86400000)}
+function toast(m){$("toast").textContent=m;$("toast").classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>$("toast").classList.remove("show"),2500)}
+function initials(){return (data.name||"SC").trim().split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()}
+function showPage(id){document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.page===id));$("pageTitle").textContent=({home:"Dashboard",market:"Market",games:"Games",coins:"Free Coins",leaderboard:"Leaderboard",profile:"My Profile",reviews:"Reviews",withdraw:"Withdrawals"})[id]||"Speed Coin";$("sidebar").classList.remove("open");if(id==="market")renderMarket();if(id==="coins")renderStreak();if(id==="leaderboard")renderLeaderboard();if(id==="profile")renderProfile();if(id==="reviews")renderReviews();if(id==="withdraw")renderWithdraw()}
+window.showPage=showPage;window.toggleSidebar=()=> $("sidebar").classList.toggle("open");
+document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+$("themeToggle").addEventListener("click",()=>{document.body.classList.toggle("light");localStorage.setItem("speedcoin-theme",document.body.classList.contains("light")?"light":"dark");drawChart()});
+if(localStorage.getItem("speedcoin-theme")==="light")document.body.classList.add("light");
+function refresh(){
+ $("welcomeName").textContent=data.name.split(" ")[0];$("walletValue").textContent=money(data.wallet);$("coinValue").textContent=num(data.coins);$("earnedValue").textContent=money(data.earned);$("scoreValue").textContent=num(data.score);
+ $("marketWallet").textContent=money(data.wallet);$("tradeCount").textContent=num(data.trades);$("positionCount").textContent=data.positions.length;
+ $("homeWithdrawBalance").textContent=money(data.wallet);let pct=Math.min(100,data.wallet/10000*100);$("homeWithdrawBar").style.width=pct+"%";$("homeWithdrawText").textContent=data.wallet>=10000?"Demo threshold reached.":"You need "+money(10000-data.wallet)+" more to reach the demo threshold.";
+ renderLeaderboard();renderPositions();renderWithdraw();renderReviews();renderProfile();save();drawChart();
 }
-
-function number(value){
-  return Number(value||0).toLocaleString("en-IN");
+function drawChart(){
+ const c=$("walletChart");if(!c)return;const ctx=c.getContext("2d"),w=c.clientWidth,h=c.clientHeight,dpr=window.devicePixelRatio||1;c.width=w*dpr;c.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);
+ const max=Math.max(...chartValues)+12,min=Math.min(...chartValues)-12,range=max-min||1;const pts=chartValues.map((v,i)=>({x:i/(chartValues.length-1)*w,y:h-((v-min)/range)*(h-16)-8}));
+ ctx.strokeStyle=getComputedStyle(document.body).getPropertyValue("--line");ctx.lineWidth=1;for(let i=1;i<4;i++){let y=h*i/4;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+ for(let i=1;i<pts.length;i++){const up=chartValues[i]>=chartValues[i-1];ctx.beginPath();ctx.moveTo(pts[i-1].x,pts[i-1].y);let mid=(pts[i-1].x+pts[i].x)/2;ctx.quadraticCurveTo(mid,pts[i-1].y,pts[i].x,pts[i].y);ctx.strokeStyle=up?"#20c878":"#ef5350";ctx.lineWidth=3;ctx.lineCap="round";ctx.stroke()}
+ const last=pts[pts.length-1],up=chartValues.at(-1)>=chartValues.at(-2);ctx.beginPath();ctx.arc(last.x,last.y,4,0,Math.PI*2);ctx.fillStyle=up?"#20c878":"#ef5350";ctx.fill();
 }
-
-function escapeHTML(value){
-  return String(value??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[c]);
+window.addEventListener("resize",drawChart);
+function renderMarket(){
+ $("marketGrid").innerHTML=companies.map(c=>`<div class="card stock-card"><div class="stock-head"><div class="company-logo" style="color:${c.color}">${c.logo}</div><span class="demo-pill">SIM</span></div><div class="stock-name">${c.name}</div><div class="stock-symbol">${c.symbol}</div><div class="stock-price" id="price-${c.id}">${money(c.price)}</div><div class="stock-change" id="change-${c.id}">+0.00%</div><div class="price-track"><span id="track-${c.id}"></span></div><div class="stock-actions"><button class="btn small" onclick="openPosition('${c.id}','buy')">Buy / Up</button><button class="btn small ghost" onclick="openPosition('${c.id}','sell')">Sell / Down</button></div></div>`).join("");
 }
-
-function today(){
-  return new Date().toISOString().slice(0,10);
+function marketTick(){
+ const elapsed=Date.now()-marketStartedAt,progress=Math.min(1,elapsed/(35*60*1000));
+ companies.forEach(c=>{if(marketBases[c.id]==null)marketBases[c.id]=c.price;const old=c.price;const base=marketBases[c.id];const target=base*(1+0.16*progress);const smooth=base+(target-base)*(0.35+0.65*(1-Math.exp(-elapsed/90000)));c.price=Math.max(old,target,smooth);let change=(c.price-old)/old*100;let el=$("price-"+c.id),ch=$("change-"+c.id),bar=$("track-"+c.id);if(el){el.textContent=money(c.price);el.style.color="var(--green)";ch.textContent="+"+((c.price/base-1)*100).toFixed(2)+"% session";ch.className="stock-change positive";bar.style.width=Math.min(100,Math.max(8,50+(c.price/base-1)*250)) + "%";bar.style.background="var(--green)"}});
+ renderPositions();chartValues.push(chartValues[chartValues.length-1]+Math.max(.25,chartValues[chartValues.length-1]*0.0007));chartValues.shift();drawChart();
 }
-
-function showToast(message){
-  const toast=$("toast");
-  toast.textContent=message;
-  toast.classList.add("show");
-  setTimeout(()=>toast.classList.remove("show"),2600);
+function openPosition(id,direction){let c=companies.find(x=>x.id===id);let amount=Number(prompt("Enter virtual amount to "+(direction==="buy"?"buy / go up":"sell / go down")+" (₹):","100"));if(!Number.isFinite(amount)||amount<=0)return;if(amount>data.wallet){toast("Not enough virtual wallet balance.");return}data.wallet-=amount;data.positions.push({id:Date.now()+Math.random(),company:id,direction,entry:c.price,amount,quantity:amount/c.price});data.trades++;data.score+=2;refresh();toast("Virtual position opened.");}
+window.openPosition=openPosition;
+function renderPositions(){
+ let body=$("positionsBody");if(!body)return;if(!data.positions.length){body.innerHTML='<tr><td colspan="8" style="text-align:center;color:var(--muted)">No open positions yet.</td></tr>';return}
+ body.innerHTML=data.positions.map(p=>{let c=companies.find(x=>x.id===p.company),value=p.quantity*c.price,profit=p.direction==="buy"?value-p.amount:p.amount-value;return `<tr><td><b>${c.name}</b></td><td>${money(p.entry)}</td><td>${money(c.price)}</td><td>${money(p.amount)}</td><td>${money(value)}</td><td class="${profit>=0?"positive":"negative"}">${profit>=0?"+":""}${money(profit)}</td><td><button class="btn small ghost" onclick="sharePosition('${p.id}')">Share +₹5</button></td><td><button class="btn small" onclick="closePosition('${p.id}')">Close</button></td></tr>`}).join("");
 }
-
-function saveLocal(){
-  if(demoMode){
-    try{
-      localStorage.setItem("fastcoin-demo",JSON.stringify(userData));
-    }catch(e){}
-  }
-}
-
-function loadLocal(){
-  try{
-    return {...defaults,...JSON.parse(
-      localStorage.getItem("fastcoin-demo")||"{}"
-    )};
-  }catch(e){
-    return {...defaults};
-  }
-}
-
-async function persist(){
-  saveLocal();
-
-  if(firebaseReady && currentUser){
-    await setDoc(
-      doc(db,"users",currentUser.uid),
-      {
-        ...userData,
-        email:currentUser.email,
-        updatedAt:serverTimestamp()
-      },
-      {merge:true}
-    );
-  }
-}
-
-async function initializeFirebase(){
-  if(!firebaseConfig.apiKey ||
-     firebaseConfig.apiKey==="YOUR_API_KEY") return;
-
-  try{
-    const app=initializeApp(firebaseConfig);
-    auth=getAuth(app);
-    db=getFirestore(app);
-    firebaseReady=true;
-
-    onAuthStateChanged(auth,async user=>{
-      if(user){
-        currentUser=user;
-        demoMode=false;
-        await loadCloudProfile(user);
-        $("authScreen").classList.remove("show");
-        await startLeaderboard();
-        initializeAppUI();
-      }else{
-        currentUser=null;
-        showAuth();
-      }
-    });
-  }catch(error){
-    console.error(error);
-    showToast("Firebase setup error. Demo mode is available.");
-  }
-}
-
-async function loadCloudProfile(user){
-  const ref=doc(db,"users",user.uid);
-  const snap=await getDoc(ref);
-
-  if(snap.exists()){
-    userData={...defaults,...snap.data()};
-  }else{
-    userData={
-      ...defaults,
-      name:user.displayName||user.email.split("@")[0],
-      email:user.email
-    };
-    await persist();
-  }
-}
-
-window.showAuth=function(){
-  $("authScreen").classList.add("show");
+window.sharePosition=function(id){let p=data.positions.find(x=>String(x.id)===String(id));if(!p)return;if(p.shared){toast("Share bonus already claimed for this position.");return}let c=companies.find(x=>x.id===p.company),msg=`I opened a ${p.direction.toUpperCase()} position on ${c.name} in Speed Coin. Join the game: https://discord.gg/TcEFQDYr7v`;const done=()=>{p.shared=true;data.wallet+=5;data.earned+=5;data.score+=5;refresh();toast("Position shared · ₹5 virtual bonus added.")};if(navigator.share){navigator.share({title:"Speed Coin position",text:msg}).then(done).catch(()=>{})}else{navigator.clipboard?.writeText(msg).then(done).catch(()=>toast("Could not copy share text."))}};
+window.closePosition=function(id){let i=data.positions.findIndex(p=>String(p.id)===String(id));if(i<0)return;let p=data.positions[i],c=companies.find(x=>x.id===p.company),value=p.quantity*c.price,profit=p.direction==="buy"?value-p.amount:p.amount-value;data.wallet+=Math.max(0,p.amount+profit);if(profit>0)data.earned+=profit;data.score+=Math.max(0,Math.round(profit/5));data.positions.splice(i,1);refresh();toast("Position closed. Demo result: "+(profit>=0?"+":"")+money(profit));};
+function renderGames(){$("gameGrid").innerHTML=games.map(g=>`<div class="card game-card"><div class="game-icon">${g.icon}</div><h3>${g.name}</h3><p>${g.desc}</p><div class="game-meta"><span>${g.mode}</span><b>${g.reward}</b></div><div class="game-meta"><span>Entry fee</span><b>${money(g.fee)}</b></div><button class="btn" onclick="startGame('${g.id}')">Pay ${money(g.fee)} · Play →</button></div>`).join("")}
+window.startGame=function(id){
+ currentGame=games.find(g=>g.id===id);if(!currentGame)return;if(data.wallet<currentGame.fee){toast("You need "+money(currentGame.fee)+" to enter this game.");return}data.wallet-=currentGame.fee;refresh();clearInterval(gameTimer);gameDone=false;taps=0;$("gameModal").classList.add("show");$("modalTitle").textContent=currentGame.name;$("modalDesc").textContent=currentGame.desc;$("modalFoot").textContent="Entry fee paid: ₹"+currentGame.fee+". Higher difficulty · virtual rewards only.";
+ const stage=$("gameStage");
+ if(id==="tap"){stage.innerHTML='<div><div class="stage-copy">Tap as fast as you can for 10 seconds</div><div class="stage-big" id="tapCount">0</div><div class="stage-copy" id="gameTimerLabel">10.0 seconds</div><button class="stage-button" id="tapBtn">TAP!</button></div>';$("tapBtn").onclick=()=>{if(gameDone)return;taps++;$("tapCount").textContent=taps};let left=10;gameTimer=setInterval(()=>{left-=.1;$("gameTimerLabel").textContent=Math.max(0,left).toFixed(1)+" seconds";if(left<=0){clearInterval(gameTimer);finishGame(Math.min(25,Math.max(0,(taps-12)*0.65)),taps>=10?"Great tapping!":"Round complete.")}},100)}
+ else if(id==="stop"||id==="countdown"){let target=id==="stop"?5:7;stage.innerHTML=`<div><div class="stage-copy">${id==="stop"?"Stop as close to 5.00 seconds as possible":"Stop as close to 7.00 seconds as possible"}</div><div class="stage-big" id="timerRead">0.00</div><button class="stage-button" id="timerBtn">START</button></div>`;let t0=0,run=false;gameTimer=setInterval(()=>{if(run)$("timerRead").textContent=((performance.now()-t0)/1000).toFixed(2)},30);$("timerBtn").onclick=()=>{if(!run&&!t0){run=true;t0=performance.now();$("timerBtn").textContent="STOP"}else if(run){run=false;clearInterval(gameTimer);let elapsed=(performance.now()-t0)/1000,delta=Math.abs(target-elapsed),reward=Math.max(0,(1-delta/target)*(id==="stop"?60:70));finishGame(reward,`You stopped at ${elapsed.toFixed(2)}s. Difference: ${delta.toFixed(2)}s.`)}}}
+ else if(id==="reaction"){stage.innerHTML='<div><div class="stage-copy" id="reactCopy">Wait for the panel to turn green...</div><div class="stage-big" id="reactIcon">🔴</div><button class="stage-button" id="reactBtn" disabled>WAIT</button></div>';let delay=1200+Math.random()*3000;gameTimer=setTimeout(()=>{if(gameDone)return;$("reactIcon").textContent="🟢";$("reactBtn").disabled=false;$("reactBtn").textContent="CLICK NOW";gameStarted=performance.now();$("reactCopy").textContent="GO! Click as fast as you can.";},delay);$("reactBtn").onclick=()=>{if(gameDone)return;if(!gameStarted){finishGame(0,"Too early! Wait for green.");return}let ms=performance.now()-gameStarted;finishGame(Math.max(0,65-(ms-140)/24),`Reaction time: ${Math.round(ms)} ms.`)}}
+ else if(id==="memory"){let seq=String(Math.floor(1000+Math.random()*9000));stage.innerHTML=`<div><div class="stage-copy">Memorise this 4-digit number</div><div class="stage-big" id="memorySeq">${seq}</div><div id="memoryEntry" style="display:none"><input class="field" id="memoryInput" inputmode="numeric" maxlength="4" placeholder="Enter the number"><button class="btn" id="memorySubmit" style="margin-top:10px">Check answer</button></div></div>`;gameTimer=setTimeout(()=>{$("memorySeq").textContent="••••";$("memoryEntry").style.display="block";$("memoryInput").focus();$("memorySubmit").onclick=()=>finishGame($("memoryInput").value===seq?90:0,$("memoryInput").value===seq?"Perfect memory!":"Not quite. The sequence was "+seq+".")},1400)}
+ else if(id==="hold"){stage.innerHTML='<div><div class="stage-copy">Hold the button for 3 seconds, then release</div><div class="stage-big" id="holdTime">0.0s</div><button class="stage-button" id="holdBtn">HOLD ME</button></div>';let start=0,iv;const b=$("holdBtn");b.onpointerdown=()=>{start=performance.now();iv=setInterval(()=>$("holdTime").textContent=((performance.now()-start)/1000).toFixed(1)+"s",50)};b.onpointerup=()=>{clearInterval(iv);let t=(performance.now()-start)/1000;finishGame(Math.max(0,35-Math.abs(3-t)*25),`Hold duration: ${t.toFixed(2)} seconds.`)}}
+ else if(id==="target"){stage.innerHTML='<div><div class="stage-copy">Click the target as many times as possible in 8 seconds</div><div class="stage-big" id="targetCount">0</div><button class="stage-button" id="targetBtn" style="border-radius:50%;width:90px;height:90px">🎯</button><div class="stage-copy" id="targetTimer">8 seconds</div></div>';let left=8;gameTimer=setInterval(()=>{left-=.1;$("targetTimer").textContent=Math.max(0,left).toFixed(1)+" seconds";if(left<=0){clearInterval(gameTimer);finishGame(Math.min(65,taps*3),`${taps} targets hit.`)}},100);$("targetBtn").onclick=()=>{if(gameDone)return;taps++;$("targetCount").textContent=taps;$("targetBtn").style.transform=`translate(${Math.random()*24-12}px,${Math.random()*18-9}px)`}}
+ else if(id==="math"||id==="sequence"){let a=2+Math.floor(Math.random()*18),b=2+Math.floor(Math.random()*12),answer=id==="math"?a+b:a+3*b;let question=id==="math"?`${a} + ${b} = ?`:`${a}, ${a+b}, ${a+2*b}, ?`;stage.innerHTML=`<div><div class="stage-copy">${id==="math"?"Solve before 7 seconds":"Find the missing number"}</div><div class="stage-big">${question}</div><input class="field" id="puzzleAnswer" type="number" placeholder="Your answer"><button class="btn" id="puzzleSubmit" style="margin-top:12px">Submit</button><div class="stage-copy" id="puzzleClock">7.0s</div></div>`;let left=7;gameTimer=setInterval(()=>{left-=.1;$("puzzleClock").textContent=Math.max(0,left).toFixed(1)+"s";if(left<=0){clearInterval(gameTimer);finishGame(0,"Time is up.")}},100);$("puzzleSubmit").onclick=()=>{clearInterval(gameTimer);let ok=Number($("puzzleAnswer").value)===answer;finishGame(ok?(id==="math"?75:100):0,ok?"Correct answer!":`Answer: ${answer}.`)}}
+ else if(id==="jackpot"){stage.innerHTML='<div><div class="stage-copy">One spin. Random demo multiplier.</div><div class="stage-big" id="spinResult">?</div><button class="stage-button" id="spinBtn">SPIN</button></div>';$("spinBtn").onclick=()=>{let options=[0,5,10,15,25,50,75,100,150],reward=options[Math.floor(Math.random()*options.length)];$("spinResult").textContent="₹"+reward;finishGame(reward,reward?"You won virtual credits!":"No reward this time. Try again.")}}
 };
-
-window.toggleAuthMode=function(){
-  authMode=authMode==="login"?"register":"login";
-  $("authTitle").textContent=authMode==="login"?"Welcome Back!":"Create Account";
-  $("authDescription").textContent=authMode==="login"?
-    "Sign in to your Fast Coin account.":"Join the Fast Coin community.";
-  $("authSubmit").textContent=authMode==="login"?"Sign In":"Create Account";
-  $("authNameGroup").style.display=authMode==="register"?"block":"none";
-  $("authSwitchText").textContent=authMode==="login"?
-    "Don't have an account?":"Already have an account?";
-  $("authSwitchLink").textContent=authMode==="login"?
-    "Create account":"Sign in";
-};
-
-window.submitAuth=async function(){
-  const email=$("authEmail").value.trim();
-  const password=$("authPassword").value;
-
-  if(!email || password.length<6){
-    showToast("Enter an email and a password of at least 6 characters.");
-    return;
-  }
-
-  if(!firebaseReady){
-    demoMode=true;
-    userData=loadLocal();
-    userData.name=$("authName").value.trim()||
-      email.split("@")[0];
-    userData.email=email;
-    $("authScreen").classList.remove("show");
-    initializeAppUI();
-    showToast("Welcome to Fast Coin demo!");
-    return;
-  }
-
-  try{
-    if(authMode==="register"){
-      const credential=await createUserWithEmailAndPassword(
-        auth,email,password
-      );
-      const name=$("authName").value.trim()||email.split("@")[0];
-      await updateProfile(credential.user,{displayName:name});
-    }else{
-      await signInWithEmailAndPassword(auth,email,password);
-    }
-  }catch(error){
-    showToast(error.message);
-  }
-};
-
-window.logout=async function(){
-  if(firebaseReady && currentUser){
-    await signOut(auth);
-  }else{
-    currentUser=null;
-    userData=null;
-    showAuth();
-  }
-};
-
-function initializeAppUI(){
-  if(!userData)userData=loadLocal();
-
-  $("authScreen").classList.remove("show");
-  updateDashboard();
-  createMarket();
-  createRewards();
-  updateProfileView();
-  updateLoans();
-  updateLeaderboard();
-  startMarket();
-  createMainChart();
-
-  $("todayDate").textContent=new Date().toLocaleDateString(
-    "en-IN",{day:"numeric",month:"short",year:"numeric"}
-  );
+function finishGame(reward,message){if(gameDone)return;gameDone=true;clearInterval(gameTimer);let win=Math.max(0,Math.round(reward*0.65*100)/100);data.wallet+=win;data.earned+=win;data.score+=Math.round(win/2)+1;refresh();$("gameStage").innerHTML=`<div><div class="stage-big">${win>0?"🎉":"🏁"}</div><div style="font:700 22px 'Space Grotesk';margin:8px 0">${win>0?"+"+money(win):"Round complete"}</div><div class="stage-copy">${message}</div><button class="btn" style="margin-top:16px" onclick="closeGame()">Continue</button></div>`}
+window.closeGame=()=>{$("gameModal").classList.remove("show");clearInterval(gameTimer);currentGame=null};
+function renderStreak(){
+ const rewards=[10,15,20,30,45,65,100],s=data.streak,now=today();let day=s.day||0,claimed=s.last===now;
+ if(s.last&&dayDiff(s.last,now)>1){day=0;s.day=0;s.coins=0}
+ $("streakList").innerHTML=rewards.map((r,i)=>`<div class="streak-day ${i===day&&!claimed?"current":""}"><div class="day-no">${i<day?"✓":"D"+(i+1)}</div><div class="day-info"><b>Day ${i+1}</b><small>${i<day?"Already claimed":i===day?"Your next reward":"Unlock after the previous day"}</small></div><div class="day-reward">+${r} coins</div></div>`).join("");
+ $("streakLabel").textContent=`DAY ${Math.min(day+1,7)} / 7`;$("streakCoins").textContent=num(s.coins||0);$("streakDays").textContent=(day+(claimed?1:0))+" days";$("streakProgress").style.width=((day+(claimed?1:0))/7*100)+"%";$("claimStreakBtn").disabled=claimed;$("claimStreakBtn").textContent=claimed?"10 coins claimed":"Claim 10 coins";$("streakStatus").textContent=claimed?"Come back tomorrow to continue your streak.":"Claim today to unlock the next reward tomorrow.";
 }
-
-function updateDashboard(){
-  const name=userData.name||"User";
-  const initials=name.slice(0,2).toUpperCase();
-
-  $("welcomeName").textContent=name;
-  $("sideName").textContent=name;
-  $("sideEmail").textContent=userData.email||"Demo Account";
-  $("sideAvatar").textContent=initials;
-  $("topAvatar").textContent=initials;
-  $("walletValue").textContent=money(userData.wallet);
-  $("coinValue").textContent=number(userData.coins);
-  $("scoreValue").textContent=number(userData.score);
-  $("followersValue").textContent=number(userData.followers);
-  $("marketWallet").textContent=money(userData.wallet);
-  $("tradeCount").textContent=number(userData.trades);
-  $("positionCount").textContent=userData.positions.length;
-
-  updateProfileView();
-  updateLoans();
-  updatePositions();
+window.beginCoinClaim=function(){let s=data.streak,now=today();if(s.last===now){toast("Today's 10 coins have already been claimed.");return}let overlay=$("claimOverlay"),left=30;overlay.classList.add("show");$("claimTimer").textContent=left;clearInterval(claimInterval);claimInterval=setInterval(()=>{left--;$("claimTimer").textContent=left;if(left<=0){clearInterval(claimInterval);claimInterval=null;overlay.classList.remove("show");completeCoinClaim()}},1000)};
+window.cancelCoinClaim=function(){clearInterval(claimInterval);claimInterval=null;$("claimOverlay").classList.remove("show");toast("Claim cancelled. No coins were added.")};
+function completeCoinClaim(){let s=data.streak,now=today();if(s.last===now)return;data.coins+=10;s.coins=(s.coins||0)+10;s.day=Math.min(7,(s.day||0)+1);s.last=now;data.score+=10;refresh();renderStreak();toast("10 virtual coins claimed!")}
+window.claimStreak=window.beginCoinClaim;
+function renderLeaderboard(){let people=[{name:"TurboAce",wallet:12450,score:2280},{name:"PixelPilot",wallet:9850,score:1940},{name:"NovaRush",wallet:11020,score:1710},{name:"You · "+data.name,wallet:data.wallet,score:data.score,you:true},{name:"QuickSilver",wallet:7600,score:980}].sort((a,b)=>b.score-a.score);let body=$("leaderboardBody");if(body)body.innerHTML=people.map((p,i)=>`<tr><td><b>${i+1}</b></td><td>${p.you?"<b>"+escapeHTML(p.name)+"</b>":escapeHTML(p.name)}</td><td>${money(p.wallet)}</td><td><b>${num(p.score)}</b></td><td class="positive">● Demo</td></tr>`).join("")}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderProfile(){
+ if(!$("profilePic"))return;let av=data.avatar;$("profilePic").innerHTML=av?`<img src="${av}" alt="Profile picture">`:initials();$("sideAvatar").innerHTML=av?`<img src="${av}" alt="">`:initials();$("topAvatar").innerHTML=av?`<img src="${av}" alt="">`:initials();$("sideName").textContent=data.name;$("profileName").textContent=data.name;$("profileHandle").textContent="@"+data.handle;$("profileBio").textContent=data.bio||"No bio added yet.";$("nameInput").value=data.name;$("handleInput").value=data.handle;$("bioInput").value=data.bio;$("memberSince").textContent=new Date(data.created).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
 }
-
-window.showPage=function(page){
-  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
-  $(page).classList.add("active");
-
-  document.querySelectorAll(".nav-btn[data-page]").forEach(btn=>{
-    btn.classList.toggle("active",btn.dataset.page===page);
-  });
-
-  const titles={
-    home:"Dashboard",market:"Virtual Market",coins:"Free Coins",
-    leaderboard:"Leaderboard",profile:"My Profile",loans:"Virtual Loans"
-  };
-  $("pageTitle").textContent=titles[page]||"Dashboard";
-  $("sidebar").classList.remove("open");
-
-  if(page==="leaderboard")updateLeaderboard();
-  if(page==="market")updatePositions();
-};
-
-document.querySelectorAll(".nav-btn[data-page]").forEach(btn=>{
-  btn.addEventListener("click",()=>showPage(btn.dataset.page));
-});
-
-window.toggleSidebar=function(){
-  $("sidebar").classList.toggle("open");
-};
-
-// ======================== MARKET ========================
-
-function createMarket(){
-  const grid=$("companyGrid");
-
-  grid.innerHTML=companies.map(company=>`
-    <div class="card company">
-      <div class="company-head">
-        <div class="company-logo" style="background:${company.color}15;color:${company.color}">
-          ${company.logo}
-        </div>
-        <span style="font-size:9px;color:#16a875">● LIVE SIM</span>
-      </div>
-      <div class="company-name">${company.name}</div>
-      <div class="company-symbol">${company.symbol}</div>
-      <div class="company-price" id="price-${company.id}">
-        ${money(company.price)}
-      </div>
-      <div class="company-change" id="change-${company.id}">+0.00%</div>
-      <div class="company-chart"><canvas id="chart-${company.id}"></canvas></div>
-      <div class="company-actions">
-        <button class="action-btn" onclick="openTrade('${company.id}','up')">Buy ↑</button>
-        <button class="action-btn" style="background:#eaf8f1;color:#13966a" onclick="openTrade('${company.id}','down')">Sell ↓</button>
-      </div>
-    </div>
-  `).join("");
-
-  companies.forEach(company=>{
-    company.history=Array.from({length:20},()=>company.price);
-    const canvas=$("chart-"+company.id);
-    companyCharts[company.id]=new Chart(canvas,{
-      type:"line",
-      data:{
-        labels:company.history.map((_,i)=>i),
-        datasets:[{
-          data:company.history,
-          borderColor:"#2563eb",
-          backgroundColor:"rgba(37,99,235,.07)",
-          fill:true,tension:.4,pointRadius:0,borderWidth:2
-        }]
-      },
-      options:{
-        responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{display:false},tooltip:{enabled:false}},
-        scales:{x:{display:false},y:{display:false}}
-      }
-    });
-  });
+window.saveProfile=function(){let name=$("nameInput").value.trim(),handle=$("handleInput").value.trim().replace(/^@/,"").replace(/\s/g,""),bio=$("bioInput").value.trim();if(!name||!handle){toast("Please enter a name and username.");return}data.name=name;data.handle=handle;data.bio=bio;refresh();toast("Profile saved.")};
+$("avatarInput").addEventListener("change",e=>{let file=e.target.files[0];if(!file)return;if(file.size>1200000){toast("Choose an image smaller than 1.2 MB.");e.target.value="";return}let reader=new FileReader();reader.onload=()=>{data.avatar=reader.result;refresh();toast("Profile picture updated.")};reader.readAsDataURL(file)});
+function renderReviews(){
+ if(!$("reviewList"))return;$("reviewEarned").textContent=money(data.earned);$("reviewTax").textContent=money(data.deducted);$("reviewRemaining").textContent=money(data.earned);$("reviewCount").textContent=data.reviews.length+" reviews";
+ $("reviewList").innerHTML=data.reviews.length?data.reviews.slice().reverse().map(r=>`<div class="quick-row"><div class="quick-icon" style="color:var(--gold)">★ ${r.rating}</div><div class="quick-copy"><b>${escapeHTML(r.name)}</b><small>${escapeHTML(r.text)}</small></div><small class="muted">${escapeHTML(r.date)}</small></div>`).join(""):'<p class="muted">No reviews yet. Be the first to share feedback.</p>';
 }
-
-function startMarket(){
-  if(marketInterval)clearInterval(marketInterval);
-
-  marketInterval=setInterval(()=>{
-    companies.forEach(company=>{
-      const old=company.price;
-      company.price=Math.max(1,company.price*(1+(Math.random()-.49)*.012));
-      company.history.push(company.price);
-      company.history.shift();
-
-      const change=(company.price-old)/old*100;
-      const price=$("price-"+company.id);
-      const changeEl=$("change-"+company.id);
-
-      if(price)price.textContent=money(company.price);
-      if(changeEl){
-        changeEl.textContent=(change>=0?"+":"")+change.toFixed(3)+"%";
-        changeEl.style.color=change>=0?"#16a875":"#e45454";
-      }
-
-      if(companyCharts[company.id]){
-        companyCharts[company.id].data.datasets[0].data=company.history;
-        companyCharts[company.id].update("none");
-      }
-    });
-
-    updatePositions();
-    if(mainChart)updateMainChart();
-  },1800);
+document.querySelectorAll(".star").forEach(b=>b.addEventListener("click",()=>{selectedRating=Number(b.dataset.star);document.querySelectorAll(".star").forEach(s=>s.classList.toggle("selected",Number(s.dataset.star)<=selectedRating))}));
+window.submitReview=function(){let text=$("reviewText").value.trim();if(text.length<5){toast("Please write a little more feedback.");return}let deduction=Math.round(Math.min(data.earned,data.wallet)*.5*100)/100;data.earned=Math.max(0,data.earned-deduction);data.wallet=Math.max(0,data.wallet-deduction);data.deducted+=deduction;data.reviews.push({name:data.name,rating:selectedRating,text,date:new Date().toLocaleDateString("en-IN")});$("reviewText").value="";refresh();toast("Review submitted. 50% demo deduction applied: "+money(deduction));};
+function renderWithdraw(){
+ let b=data.wallet,p=Math.min(100,b/10000*100);$("withdrawBalance").textContent=money(b);$("withdrawBar").style.width=p+"%";$("withdrawHint").textContent=b>=10000?"Threshold reached. You can submit a demo request.":money(10000-b)+" remaining to reach the minimum threshold.";$("withdrawBtn").disabled=b<10000;$("withdrawHistory").innerHTML=data.withdrawals.length?data.withdrawals.slice().reverse().map(w=>`<div class="quick-row"><div class="quick-icon">⇧</div><div class="quick-copy"><b>${money(w.amount)} demo request</b><small>Submitted ${escapeHTML(w.date)} · Not a real payout</small></div><span class="demo-pill">DEMO</span></div>`).join(""):"No demo withdrawal requests yet.";
 }
-
-window.openTrade=function(id,direction){
-  activeCompany=companies.find(c=>c.id===id);
-  tradeDirection=direction;
-  if(!activeCompany)return;
-
-  $("tradeTitle").textContent=(direction==="up"?"Buy ":"Sell ")+activeCompany.name;
-  $("tradeDescription").textContent=
-    "Open a simulated "+(direction==="up"?"upward":"downward")+
-    " position using virtual currency.";
-  $("tradeInfo").textContent=
-    "Current simulated price: "+money(activeCompany.price)+
-    ". This is a practice trade, not an actual security transaction.";
-  $("tradeAmount").value=100;
-  $("tradeModal").classList.add("show");
-};
-
-window.closeModal=function(){
-  $("tradeModal").classList.remove("show");
-};
-
-window.confirmTrade=async function(){
-  const amount=Number($("tradeAmount").value);
-
-  if(!Number.isFinite(amount)||amount<=0){
-    showToast("Enter a valid amount.");
-    return;
-  }
-
-  const quantity=amount/activeCompany.price;
-
-  if(amount>userData.wallet){
-    showToast("Insufficient virtual wallet balance.");
-    return;
-  }
-
-  userData.wallet-=amount;
-  userData.trades++;
-  userData.score+=5;
-
-  userData.positions.push({
-    id:Date.now()+Math.random(),
-    company:activeCompany.id,
-    direction:tradeDirection,
-    entry:activeCompany.price,
-    quantity,
-    amount
-  });
-
-  await persist();
-  updateDashboard();
-  updateLeaderboard();
-  closeModal();
-  showToast("Virtual position opened successfully!");
-};
-
-function updatePositions(){
-  if(!$("positionsTable"))return;
-
-  const positions=userData?.positions||[];
-
-  if(!positions.length){
-    $("positionsTable").innerHTML=
-      '<tr><td colspan="7" style="text-align:center;color:#8490a5;padding:25px">No open positions yet.</td></tr>';
-    return;
-  }
-
-  $("positionsTable").innerHTML=positions.map(p=>{
-    const c=companies.find(x=>x.id===p.company);
-    const value=p.quantity*c.price;
-    return `<tr>
-      <td><b>${c.name}</b></td>
-      <td>${p.direction==="up"?"Buy":"Sell"}</td>
-      <td>${money(p.entry)}</td>
-      <td>${p.quantity.toFixed(3)}</td>
-      <td>${money(c.price)}</td>
-      <td>${money(value)}</td>
-      <td><button class="action-btn" onclick="closePosition('${p.id}')">Close</button></td>
-    </tr>`;
-  }).join("");
-}
-
-window.closePosition=async function(id){
-  const index=userData.positions.findIndex(p=>String(p.id)===String(id));
-  if(index<0)return;
-
-  const p=userData.positions[index];
-  const c=companies.find(x=>x.id===p.company);
-  const currentValue=p.quantity*c.price;
-  const profit=p.direction==="up"
-    ?currentValue-p.amount
-    :p.amount-currentValue;
-
-  userData.wallet+=p.amount+profit;
-  userData.score+=profit>=0?10:0;
-  userData.positions.splice(index,1);
-
-  await persist();
-  updateDashboard();
-  updateLeaderboard();
-  showToast("Position closed. Virtual result: "+money(profit));
-};
-
-// ======================== REWARDS ========================
-
-function getRewards(){
-  if(userData.rewards.date!==today()){
-    userData.rewards={
-      date:today(),count:0,earned:0,lastSession:0
-    };
-  }
-  return userData.rewards;
-}
-
-function createRewards(){
-  const rewards=getRewards();
-
-  $("rewardList").innerHTML=Array.from({length:10},(_,i)=>`
-    <div class="reward-item">
-      <div class="reward-icon">◉</div>
-      <div class="reward-info">
-        <strong>Reward Activity ${i+1}</strong>
-        <p>Complete a simulated reward activity</p>
-      </div>
-      <span class="reward-count" id="reward-status-${i}">
-        ${i<rewards.count?"Claimed":" +50 coins"}
-      </span>
-      <button class="action-btn" id="reward-btn-${i}"
-        ${i<rewards.count?"disabled":""}
-        onclick="claimReward(${i})">
-        ${i<rewards.count?"Done":"Claim"}
-      </button>
-    </div>
-  `).join("");
-
-  updateRewardView();
-}
-
-function updateRewardView(){
-  const r=getRewards();
-  $("rewardCounter").textContent=r.count+" / 10";
-  $("earnedToday").textContent=number(r.earned);
-  $("remainingClaims").textContent=10-r.count;
-  $("rewardProgress").style.width=(r.count*10)+"%";
-
-  const remaining=12*60*60*1000-(Date.now()-r.lastSession);
-
-  $("cooldownText").textContent=
-    r.count>=10?"Daily reward limit reached. Come back tomorrow.":
-    r.lastSession&&remaining>0?
-    "Next reward session available in "+formatTime(remaining):
-    "Your reward session is ready. Claim up to 10 activities today.";
-}
-
-function formatTime(ms){
-  const hours=Math.floor(ms/3600000);
-  const minutes=Math.floor(ms%3600000/60000);
-  const seconds=Math.floor(ms%60000/1000);
-  return `${hours}h ${minutes}m ${seconds}s`;
-}
-
-window.claimReward=async function(index){
-  const r=getRewards();
-
-  if(r.count>=10){
-    showToast("You have reached today's reward limit.");
-    return;
-  }
-
-  const remaining=12*60*60*1000-(Date.now()-r.lastSession);
-  if(r.lastSession&&remaining>0){
-    showToast("Cooldown: "+formatTime(remaining));
-    return;
-  }
-
-  if(index!==r.count){
-    showToast("Complete reward activities in order.");
-    return;
-  }
-
-  // Demo-only reward completion.
-  // Replace with a verified rewarded-ad provider callback.
-  userData.coins+=50;
-  userData.score+=5;
-  r.count++;
-  r.earned+=50;
-  r.lastSession=Date.now();
-
-  await persist();
-
-  $("reward-btn-"+index).disabled=true;
-  $("reward-btn-"+index).textContent="Done";
-  $("reward-status-"+index).textContent="Claimed";
-
-  updateDashboard();
-  updateRewardView();
-  updateLeaderboard();
-
-  showToast("+50 virtual coins added!");
-};
-
-// ======================== PROFILE ========================
-
-function updateProfileView(){
-  if(!userData)return;
-
-  const name=userData.name||"User";
-  const initials=name.slice(0,2).toUpperCase();
-
-  $("profileAvatar").textContent=initials;
-  $("profileDisplayName").textContent=name;
-  $("profileEmail").textContent=userData.email||"Demo Account";
-  $("profileUID").textContent=currentUser?.uid||"DEMO-ACCOUNT";
-  $("editName").value=userData.name;
-  $("editUsername").value=userData.username;
-  $("editBio").value=userData.bio;
-
-  $("profileWallet").textContent=money(userData.wallet);
-  $("profileCoins").textContent=number(userData.coins);
-  $("profileScore").textContent=number(userData.score);
-  $("profileFollowers").textContent=number(userData.followers);
-}
-
-window.saveProfile=async function(){
-  const name=$("editName").value.trim();
-  const username=$("editUsername").value.trim();
-
-  if(!name||!username){
-    showToast("Name and username are required.");
-    return;
-  }
-
-  userData.name=name;
-  userData.username=username;
-  userData.bio=$("editBio").value.trim();
-
-  if(firebaseReady&&currentUser){
-    await updateProfile(currentUser,{displayName:name});
-  }
-
-  await persist();
-  updateDashboard();
-  updateLeaderboard();
-  showToast("Profile updated!");
-};
-
-// ======================== LOANS ========================
-
-function updateLoans(){
-  if(!userData)return;
-
-  $("loanTotal").textContent=money(userData.loanTotal);
-  $("loanRepaid").textContent=money(userData.loanRepaid);
-  $("loanOutstanding").textContent=money(
-    Math.max(0,userData.loanTotal-userData.loanRepaid)
-  );
-}
-
-window.takeLoan=async function(){
-  const amount=Number($("loanAmount").value);
-
-  if(!Number.isFinite(amount)||amount<100||amount>5000){
-    showToast("Choose a virtual credit amount between ₹100 and ₹5,000.");
-    return;
-  }
-
-  userData.loanTotal+=amount;
-  await persist();
-  updateLoans();
-  showToast("Virtual credit added to your practice ledger.");
-};
-
-window.repayLoan=async function(){
-  const amount=Number($("repayAmount").value);
-  const outstanding=userData.loanTotal-userData.loanRepaid;
-
-  if(!Number.isFinite(amount)||amount<=0){
-    showToast("Enter a valid repayment amount.");
-    return;
-  }
-
-  if(amount>outstanding){
-    showToast("Amount exceeds outstanding virtual credit.");
-    return;
-  }
-
-  if(amount>userData.wallet){
-    showToast("Insufficient virtual wallet balance.");
-    return;
-  }
-
-  userData.wallet-=amount;
-  userData.loanRepaid+=amount;
-
-  await persist();
-  updateDashboard();
-  showToast("Virtual credit repayment successful.");
-};
-
-// ======================== LEADERBOARD ========================
-
-async function startLeaderboard(){
-  if(!firebaseReady)return;
-
-  if(unsubLeaderboard)unsubLeaderboard();
-
-  unsubLeaderboard=onSnapshot(
-    collection(db,"users"),
-    snapshot=>{
-      leaderboardUsers=snapshot.docs.map(d=>({
-        uid:d.id,...d.data()
-      }));
-      updateLeaderboard();
-    },
-    error=>{
-      console.error("Leaderboard error:",error);
-      showToast("Leaderboard permissions need configuration.");
-    }
-  );
-}
-
-function getAllPlayers(){
-  if(firebaseReady){
-    return leaderboardUsers;
-  }
-
-  return [
-    {
-      name:"Fast Coin User",username:"you",
-      wallet:8500,score:940,followers:85
-    },
-    {
-      name:"BlueTrader",username:"blue",
-      wallet:12500,score:870,followers:65
-    },
-    {
-      name:"CoinMaster",username:"coin",
-      wallet:11200,score:790,followers:53
-    },
-    {
-      name:"MarketPro",username:"market",
-      wallet:9800,score:710,followers:41
-    },
-    {
-      name:"SpeedKing",username:"speed",
-      wallet:7600,score:620,followers:28
-    }
-  ].concat(userData?[{
-    ...userData,
-    uid:currentUser?.uid||"demo-user"
-  }]:[]);
-}
-
-function leaderboardHTML(limit){
-  const players=getAllPlayers()
-    .sort((a,b)=>(b.score||0)-(a.score||0))
-    .slice(0,limit);
-
-  if(!players.length){
-    return '<tr><td colspan="6">No members found.</td></tr>';
-  }
-
-  return players.map((p,i)=>`
-    <tr>
-      <td><span class="rank ${i===0?"gold":i===1?"silver":i===2?"bronze":""}">${i+1}</span></td>
-      <td><div class="player">
-        <div class="avatar">${escapeHTML((p.name||"U").slice(0,1).toUpperCase())}</div>
-        ${escapeHTML(p.name||"Member")}
-      </div></td>
-      <td>${money(p.wallet)}</td>
-      <td><b>${number(p.score)}</b></td>
-      <td>${number(p.followers)}</td>
-      ${limit>5?"<td><span class='green'>● Active</span></td>":""}
-    </tr>
-  `).join("");
-}
-
-function updateLeaderboard(){
-  $("homeLeaderboard").innerHTML=leaderboardHTML(5);
-  $("fullLeaderboard").innerHTML=leaderboardHTML(100);
-}
-
-// ======================== CHART ========================
-
-function createMainChart(){
-  const canvas=$("mainChart");
-  if(!canvas)return;
-
-  if(mainChart)mainChart.destroy();
-
-  const labels=Array.from({length:20},(_,i)=>i+1);
-  const values=labels.map(()=>1000+Math.random()*150);
-
-  mainChart=new Chart(canvas,{
-    type:"line",
-    data:{
-      labels,
-      datasets:[{
-        data:values,
-        borderColor:"#2563eb",
-        borderWidth:2.5,
-        backgroundColor:"rgba(37,99,235,.08)",
-        fill:true,
-        tension:.4,
-        pointRadius:0
-      }]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false}},
-      scales:{
-        x:{grid:{display:false},ticks:{display:false}},
-        y:{grid:{color:"#f0f2f7"},ticks:{font:{size:9},color:"#9aa4b5"}}
-      }
-    }
-  });
-}
-
-function updateMainChart(){
-  if(!mainChart)return;
-  const data=mainChart.data.datasets[0].data;
-  data.shift();
-  data.push(data[data.length-1]*(1+(Math.random()-.49)*.015));
-  mainChart.update("none");
-}
-
-// ======================== STARTUP ========================
-
-initializeFirebase();
-
-// If Firebase is not configured, show a local demo.
-if(!firebaseConfig.apiKey ||
-   firebaseConfig.apiKey==="YOUR_API_KEY"){
-  userData=loadLocal();
-  demoMode=true;
-  initializeAppUI();
-}
-
+window.requestWithdrawal=function(){if(data.wallet<10000){toast("Minimum wallet threshold is ₹10,000.");return}data.withdrawals.push({amount:data.wallet,date:new Date().toLocaleString("en-IN")});refresh();toast("Demo request logged. No money was transferred.");};
+$("todayDate").textContent=new Date().toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short",year:"numeric"});
+renderGames();renderMarket();renderStreak();refresh();
+marketTimer=setInterval(marketTick,1800);
 </script>
 </body>
 </html>
